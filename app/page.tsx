@@ -64,7 +64,11 @@ export default function LandingPage() {
 
         .help-grid {
           display: grid;
-          gap: 14px;
+          gap: 16px;
+        }
+
+        .hero-inner {
+          padding: 28px 20px;
         }
 
         @media (min-width: 900px) {
@@ -76,10 +80,14 @@ export default function LandingPage() {
           .help-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
           }
+
+          .hero-inner {
+            padding: 40px 36px;
+          }
         }
       `}</style>
 
-      <section style={{ padding: '20px 20px 36px' }}>
+      <section style={{ padding: '24px 20px 56px' }}>
         <div className="landing-shell">
           <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '28px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -103,7 +111,7 @@ export default function LandingPage() {
           </header>
 
           <div className="hero-panel">
-            <div className="hero-grid" style={{ padding: '30px 24px' }}>
+            <div className="hero-grid hero-inner">
               <div>
                 <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '14px' }}>
                   capablemind.app
@@ -134,14 +142,14 @@ export default function LandingPage() {
                   For midlife women whose capacity changes from day to day.
                 </p>
 
-                <p style={{ fontSize: '1.08rem', lineHeight: 1.85, color: '#4A4E47', margin: '0 0 22px', maxWidth: '38rem' }}>
+                <p style={{ fontSize: '1.08rem', lineHeight: 1.85, color: '#4A4E47', margin: '0 0 28px', maxWidth: '38rem' }}>
                   Some days you have energy, focus and momentum. Other days you&apos;re running on poor sleep, brain fog, overwhelm, hormone changes, stress, or simply too much life. Steady helps you plan around the capacity you actually have, notice the patterns behind harder days, and adjust when reality changes.
                 </p>
-                <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#6A6F68', margin: '0 0 22px', maxWidth: '37rem' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#6A6F68', margin: '0 0 28px', maxWidth: '37rem' }}>
                   Whether that&apos;s ADHD, perimenopause, menopause, poor sleep or everyday life pressures, Steady helps you work with your day instead of fighting it.
                 </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
                   <Link
                     href={APP_URL}
                     style={{
@@ -182,7 +190,7 @@ export default function LandingPage() {
                   border: '1px solid rgba(92,74,94,0.14)',
                   color: '#4A4E47',
                   fontSize: '0.9375rem',
-                  marginBottom: '22px',
+                  marginBottom: '32px',
                 }}>
                   <span style={{ color: '#5C4A5E', fontWeight: 700 }}>•</span>
                   Free for the first 100 users in exchange for honest feedback.
@@ -321,7 +329,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section style={{ padding: '0 20px 72px' }}>
+      <section style={{ padding: '56px 20px 72px' }}>
         <div className="landing-shell">
           <div style={{ maxWidth: '36rem', marginBottom: '22px' }}>
             <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
