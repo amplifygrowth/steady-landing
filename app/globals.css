@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #F8F6F1;
+  --surface: #FFFFFF;
+  --surface-subtle: #FAFAF7;
+  --border: #E8E9E3;
+  --border-input: #E3E4DE;
+  --text-primary: #2B2F2A;
+  --text-secondary: #4A4E47;
+  --text-muted: #8A8F86;
+  --text-faint: #9A9E96;
+  --accent: #5C4A5E;
+  --accent-light: #F3F0F4;
+  --done: #5C4A5E;
+  --green-soft: #E8F0EA;
+  --amber: #6B83A0;
+  --amber-soft: #E4EAF0;
+  --red: #B96A6A;
+  --red-soft: #F2E0E0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: radial-gradient(ellipse at center, #DDD3E8 0%, #F8F6F1 60%, #F8F6F1 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: var(--font-public-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
