@@ -13,7 +13,7 @@ const steps = [
     id: 2,
     label: 'Plan the day',
     heading: 'Separate commitments from everything else.',
-    copy: 'Not everything belongs on one giant to-do list.',
+    copy: "Not everything belongs on one giant to-do list. Today has a three-task limit — because when executive function is stretched, choosing from an open list is often harder than doing the actual task. Three things gives your brain somewhere to start.",
   },
   {
     id: 3,

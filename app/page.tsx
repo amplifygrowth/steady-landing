@@ -14,6 +14,10 @@ const helpCards = [
     body: 'See when brain fog, overwhelm, poor sleep and low battery days tend to show up.',
   },
   {
+    title: 'Built for executive dysfunction',
+    body: 'The three-task limit for today isn\'t arbitrary. Choosing from an open list takes more cognitive effort than the task itself. Three gives your brain somewhere to start.',
+  },
+  {
     title: 'Use support gently',
     body: 'Optional nudges and evening reflection help you stay in touch with your day without adding more noise.',
   },
@@ -65,6 +69,7 @@ export default function LandingPage() {
         .help-grid {
           display: grid;
           gap: 16px;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .hero-inner {
@@ -78,7 +83,7 @@ export default function LandingPage() {
           }
 
           .help-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(4, minmax(0, 1fr));
           }
 
           .hero-inner {
