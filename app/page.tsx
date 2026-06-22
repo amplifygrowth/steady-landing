@@ -143,7 +143,7 @@ export default function LandingPage() {
                   Steady
                 </h1>
 
-                <p className="font-display" style={{ fontSize: 'clamp(1.25rem, 2.8vw, 2rem)', lineHeight: 1.3, color: '#2B2F2A', margin: '0 0 18px', maxWidth: '22ch' }}>
+                <p className="font-display" style={{ fontSize: 'clamp(1.25rem, 2.8vw, 2rem)', lineHeight: 1.3, color: '#2B2F2A', margin: '0 0 18px' }}>
                   For midlife women whose capacity changes from day to day.
                 </p>
 
