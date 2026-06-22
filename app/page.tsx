@@ -11,15 +11,15 @@ const helpCards = [
   },
   {
     title: 'Notice the patterns',
-    body: 'See when brain fog, overwhelm, poor sleep and low battery days tend to show up.',
+    body: 'See when brain fog, overwhelm, poor sleep and low battery days tend to show up, and what tends to come before them.',
   },
   {
     title: 'Built for executive dysfunction',
     body: 'The three-task limit for today isn\'t arbitrary. Choosing from an open list takes more cognitive effort than the task itself. Three gives your brain somewhere to start.',
   },
   {
-    title: 'Use support gently',
-    body: 'Optional nudges and evening reflection help you stay in touch with your day without adding more noise.',
+    title: 'The worry jar',
+    body: 'Get it out of your head. Worries sit quietly and are gone by morning. Held, not ignored, and not cluttering your day.',
   },
 ]
 
@@ -119,7 +119,7 @@ export default function LandingPage() {
             <div className="hero-grid hero-inner">
               <div>
                 <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '14px' }}>
-                  capablemind.app
+                  steady.capablemind.app
                 </div>
 
                 <div style={{
@@ -265,7 +265,7 @@ export default function LandingPage() {
                         <span style={{ fontSize: '0.75rem', color: '#9A9E96' }}>still happening</span>
                       </div>
                       <div style={{ display: 'grid', gap: '8px', marginBottom: '14px' }}>
-                        {['Work 9-5', 'Client meeting at 2pm'].map((item) => (
+                        {['Work 9-5', 'School run 3:30pm'].map((item) => (
                           <div key={item} style={{ fontSize: '0.95rem', color: '#2B2F2A' }}>{item}</div>
                         ))}
                       </div>
@@ -275,7 +275,7 @@ export default function LandingPage() {
                         <span style={{ fontSize: '0.75rem', color: '#9A9E96' }}>2 of 3 chosen</span>
                       </div>
                       <div style={{ display: 'grid', gap: '10px' }}>
-                        {['Make GP appointment', 'Send clothes order back'].map((item) => (
+                        {['Book the HRT review', 'Chase the insurance'].map((item) => (
                           <div
                             key={item}
                             style={{
@@ -368,6 +368,69 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: '0 20px 72px' }}>
+        <div style={{ maxWidth: '36rem', margin: '0 auto' }}>
+          <div style={{
+            borderRadius: '24px',
+            padding: '32px 28px',
+            background: 'rgba(255,255,255,0.72)',
+            border: '1px solid rgba(229,224,232,0.9)',
+            boxShadow: '0 10px 30px rgba(92,74,94,0.08)',
+          }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
+              Early access
+            </div>
+            <h2 className="font-display" style={{ fontSize: '1.8rem', lineHeight: 1.1, color: '#2B2F2A', marginBottom: '10px' }}>
+              Free for the first 100 users.
+            </h2>
+            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: '0 0 20px' }}>
+              In exchange for honest feedback. Leave your email and we will let you know when a spot opens.
+            </p>
+            <form
+              action="https://formspree.io/f/placeholder"
+              method="POST"
+              style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                style={{
+                  flex: '1 1 200px',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  border: '1.5px solid #E3E4DE',
+                  fontSize: '1rem',
+                  color: '#2B2F2A',
+                  background: '#FAFAF7',
+                  outline: 'none',
+                  fontFamily: 'inherit',
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  padding: '12px 20px',
+                  borderRadius: '12px',
+                  background: '#5C4A5E',
+                  color: '#FFF',
+                  border: 'none',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  touchAction: 'manipulation',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Keep me posted
+              </button>
+            </form>
           </div>
         </div>
       </section>

@@ -43,7 +43,7 @@ export const privacyPolicy: LegalDocument = {
       bullets: [
         'Account information: your email address, and optionally your name.',
         'Health-related information (special category data): this includes whether you have ADHD, your menopause or perimenopause and HRT status, your menstrual cycle status if relevant, and the symptoms, capacity levels, and sleep ratings you log each day.',
-        'Daily usage data: the tasks, notes, and reflections you create within the app, including items in Today, Basics, Fixed points, Later, Ideas, and the Worry jar.',
+        'Daily usage data: the tasks, notes, and reflections you create within the app, including items in Today, Basics, Non-Negotiables, Later, Ideas, and the Worry jar.',
         'Device and notification data: a push notification subscription identifier, if you enable notifications, so we can send you reminders you have asked for.',
         'Technical data: basic information about how you use the app, to help us understand and fix problems.',
       ],

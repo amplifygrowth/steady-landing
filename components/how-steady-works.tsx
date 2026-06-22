@@ -7,31 +7,31 @@ const steps = [
     id: 1,
     label: 'Morning check-in',
     heading: "Start with the day you've actually got.",
-    copy: 'Choose the capacity you think you have today. Add anything already affecting you.',
+    copy: 'Rate your energy, focus, mood, and sleep on a quick five-point scale. Add anything already affecting your battery: poor sleep, hormones, stress. The plan starts from reality, not assumption.',
   },
   {
     id: 2,
     label: 'Plan the day',
     heading: 'Separate commitments from everything else.',
-    copy: "Not everything belongs on one giant to-do list. Today has a three-task limit — because when executive function is stretched, choosing from an open list is often harder than doing the actual task. Three things gives your brain somewhere to start.",
+    copy: "Not everything belongs on one giant to-do list. Non-negotiables stay fixed. Basics handle the recurring life load. Today holds up to three chosen tasks. When executive function is stretched, choosing from an open list is often harder than doing the actual task. Everything else goes to Later, Ideas, or the Worry jar.",
   },
   {
     id: 3,
     label: 'Reality changes',
     heading: 'Adjust when the day changes.',
-    copy: "Changing capacity isn't failure. It's the app adapting to reality.",
+    copy: "Capacity shifts mid-day. Brain fog appears. Energy drops. Steady lets you update your capacity so the rest of the day adjusts with you. Changing capacity is not failure. It is the app adapting to reality.",
   },
   {
     id: 4,
     label: 'Evening reflection',
     heading: 'Record what actually happened.',
-    copy: 'A quick reflection closes the loop.',
+    copy: 'Rate how the day ended: Fine, Hard, or Write-off. Log anything that came up in the evening. Capture what you want to carry into tomorrow. A quick close is enough.',
   },
   {
     id: 5,
     label: 'Patterns',
     heading: 'Learn from the difference.',
-    copy: 'Patterns helps you understand your capacity, not judge your productivity.',
+    copy: 'Patterns shows you 28 days of capacity, morning factors, and evening symptoms in one view. See when harder days cluster, what tends to precede them, and how your capacity shifts around health changes or life events.',
   },
 ] as const
 
@@ -59,50 +59,55 @@ function StepScreen({ step }: { step: number }) {
           <div style={{ fontSize: '0.75rem', color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Morning check-in</div>
           <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>7:32am</div>
         </div>
-        <div style={{ padding: '18px' }}>
+        <div style={{ padding: '18px', display: 'grid', gap: '12px' }}>
           <div style={{ ...surfaceStyle, padding: '16px' }}>
-            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '10px' }}>Capacity</div>
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
-              {([
-                ['Momentum', false],
-                ['Steady', true],
-                ['Low Battery', false],
-              ] as const).map(([label, active]) => (
-                <div
-                  key={label}
-                  style={{
-                    flex: 1,
-                    padding: '10px 8px',
-                    borderRadius: '12px',
-                    textAlign: 'center',
-                    fontSize: '0.9375rem',
-                    fontWeight: active ? 600 : 500,
-                    background: active ? '#F3F0F4' : '#FAFAF7',
-                    border: `1.5px solid ${active ? '#5C4A5E' : '#E3E4DE'}`,
-                    color: active ? '#5C4A5E' : '#6E726B',
-                  }}
-                >
-                  {label}
+            <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '10px' }}>How are you arriving today?</div>
+            {([
+              ['Energy', 4],
+              ['Focus', 3],
+            ] as const).map(([label, active]) => (
+              <div key={label} style={{ marginBottom: '10px' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#4A4E47', marginBottom: '6px' }}>{label}</div>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  {[1, 2, 3, 4, 5].map((n) => (
+                    <div
+                      key={n}
+                      style={{
+                        flex: 1,
+                        height: '36px',
+                        borderRadius: '10px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '0.9375rem',
+                        fontWeight: 600,
+                        background: n === active ? '#5C4A5E' : '#FAFAF7',
+                        color: n === active ? '#FFF' : '#8A8F86',
+                        border: `1.5px solid ${n === active ? '#5C4A5E' : '#E3E4DE'}`,
+                      }}
+                    >
+                      {n}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>Morning factors</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {['Poor sleep', 'Woke multiple times'].map((item) => (
+              </div>
+            ))}
+          </div>
+          <div style={{ ...surfaceStyle, padding: '14px' }}>
+            <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#4A4E47', marginBottom: '8px' }}>What is influencing your battery?</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+              {(['Poor sleep', 'Woke multiple times', 'Hormones'] as const).map((item, i) => (
                 <div
                   key={item}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    padding: '10px 12px',
-                    borderRadius: '12px',
-                    background: '#FAFAF7',
-                    color: '#4A4E47',
-                    fontSize: '0.9375rem',
+                    padding: '6px 10px',
+                    borderRadius: '9999px',
+                    fontSize: '0.8125rem',
+                    background: i < 2 ? '#F3F0F4' : '#FFFFFF',
+                    color: i < 2 ? '#5C4A5E' : '#4A4E47',
+                    border: `1.5px solid ${i < 2 ? '#5C4A5E' : '#E3E4DE'}`,
                   }}
                 >
-                  <span style={{ color: '#5C4A5E', fontWeight: 700 }}>✓</span>
                   {item}
                 </div>
               ))}
@@ -120,18 +125,23 @@ function StepScreen({ step }: { step: number }) {
           <div style={{ fontSize: '0.75rem', color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Today</div>
           <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>Steady day</div>
         </div>
-        <div style={{ padding: '18px', display: 'grid', gap: '12px' }}>
+        <div style={{ padding: '18px', display: 'grid', gap: '10px' }}>
           {([
-            ['Non-Negotiables', ['Work 9-5', 'Client meeting']],
-            ['Basics', ['Walk dog', 'Plan dinner']],
-            ['Today', ['Make GP appointment', 'Send clothes order back']],
-            ['Later', ['Research new phone contract']],
-          ] as const).map(([title, items]) => (
-            <div key={title} style={{ ...surfaceStyle, padding: '14px 16px' }}>
-              <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5C4A5E', marginBottom: '8px' }}>{title}</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {items.map((item) => (
-                  <div key={item} style={{ fontSize: '0.9375rem', color: '#2B2F2A' }}>{item}</div>
+            ['Non-Negotiables', ['Work 9-5', 'School run 3:30pm'], null],
+            ['Basics', ['Walk dog', 'Plan dinner'], null],
+            ['Today', ['Book the HRT review', 'Chase the insurance'], 'Make smaller →'],
+            ['Later / Ideas / Worries', ['Look into therapy options', 'Whether I said the wrong thing'], null],
+          ] as const).map(([title, items, extra]) => (
+            <div key={title} style={{ ...surfaceStyle, padding: '12px 14px' }}>
+              <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#5C4A5E', marginBottom: '6px' }}>{title}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {items.map((item, i) => (
+                  <div key={item} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ fontSize: '0.9rem', color: '#2B2F2A' }}>{item}</div>
+                    {extra && i === 0 && (
+                      <div style={{ fontSize: '0.75rem', color: '#8A8F86', whiteSpace: 'nowrap' }}>{extra}</div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
@@ -173,11 +183,34 @@ function StepScreen({ step }: { step: number }) {
           <div style={{ fontSize: '0.75rem', color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Evening reflection</div>
           <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>8:47pm</div>
         </div>
-        <div style={{ padding: '18px' }}>
-          <div style={{ ...surfaceStyle, padding: '16px', marginBottom: '12px' }}>
-            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>Symptoms</div>
+        <div style={{ padding: '18px', display: 'grid', gap: '12px' }}>
+          <div style={{ ...surfaceStyle, padding: '16px' }}>
+            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '10px' }}>How did the day end?</div>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              {(['Fine', 'Hard', 'Write-off'] as const).map((label) => (
+                <div
+                  key={label}
+                  style={{
+                    flex: 1,
+                    padding: '9px 8px',
+                    borderRadius: '12px',
+                    textAlign: 'center',
+                    fontSize: '0.875rem',
+                    fontWeight: label === 'Hard' ? 600 : 500,
+                    background: label === 'Hard' ? '#F3F0F4' : '#FAFAF7',
+                    border: `1.5px solid ${label === 'Hard' ? '#5C4A5E' : '#E3E4DE'}`,
+                    color: label === 'Hard' ? '#5C4A5E' : '#6E726B',
+                  }}
+                >
+                  {label}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ ...surfaceStyle, padding: '16px' }}>
+            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>What came up this evening?</div>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {['Brain fog', 'Overwhelm'].map((item) => (
+              {(['Brain fog', 'Overwhelm'] as const).map((item) => (
                 <div
                   key={item}
                   style={{
@@ -194,12 +227,6 @@ function StepScreen({ step }: { step: number }) {
               ))}
             </div>
           </div>
-          <div style={{ ...surfaceStyle, padding: '16px' }}>
-            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>Finished day</div>
-            <div style={{ display: 'inline-flex', padding: '8px 12px', borderRadius: '9999px', background: '#F2E0E0', color: '#B96A6A', border: '1px solid #E5C9C9', fontSize: '0.9375rem', fontWeight: 600 }}>
-              Low Battery
-            </div>
-          </div>
         </div>
       </div>
     )
@@ -209,7 +236,7 @@ function StepScreen({ step }: { step: number }) {
     <div style={shellStyle}>
       <div style={{ padding: '18px 18px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ fontSize: '0.75rem', color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Patterns</div>
-        <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>Last 7 days</div>
+        <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>Last 28 days</div>
       </div>
       <div style={{ padding: '18px', display: 'grid', gap: '12px' }}>
         {[
@@ -312,6 +339,7 @@ export default function HowSteadyWorks() {
                       cursor: 'pointer',
                       fontFamily: 'inherit',
                       whiteSpace: 'nowrap',
+                      touchAction: 'manipulation',
                     }}
                   >
                     {step.id}. {step.label}
@@ -347,6 +375,7 @@ export default function HowSteadyWorks() {
                   fontSize: '0.9375rem',
                   fontWeight: 600,
                   fontFamily: 'inherit',
+                  touchAction: 'manipulation',
                 }}
               >
                 Back
@@ -367,6 +396,7 @@ export default function HowSteadyWorks() {
                   fontSize: '0.9375rem',
                   fontWeight: 600,
                   fontFamily: 'inherit',
+                  touchAction: 'manipulation',
                 }}
               >
                 Next
