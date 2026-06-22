@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Serif_Display, DM_Sans } from 'next/font/google'
+import { Playfair_Display, DM_Sans } from 'next/font/google'
 import './globals.css'
 
 const dmSans = DM_Sans({
@@ -9,9 +9,9 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
-const dmSerifDisplay = DM_Serif_Display({
+const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '600'],
   variable: '--font-fraunces',
   display: 'swap',
 })
@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmSerifDisplay.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${playfairDisplay.variable}`}>
       <body>{children}</body>
     </html>
   )
