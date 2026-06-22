@@ -60,26 +60,28 @@ function StepScreen({ step }: { step: number }) {
           <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>7:32am</div>
         </div>
         <div style={{ padding: '18px', display: 'grid', gap: '12px' }}>
-          <div style={{ ...surfaceStyle, padding: '16px' }}>
+          <div style={{ ...surfaceStyle, padding: '14px' }}>
             <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '10px' }}>How are you arriving today?</div>
             {([
               ['Energy', 4],
               ['Focus', 3],
+              ['Mood', 3],
+              ['Sleep', 2],
             ] as const).map(([label, active]) => (
-              <div key={label} style={{ marginBottom: '10px' }}>
-                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#4A4E47', marginBottom: '6px' }}>{label}</div>
-                <div style={{ display: 'flex', gap: '6px' }}>
+              <div key={label} style={{ marginBottom: '8px' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#4A4E47', marginBottom: '4px' }}>{label}</div>
+                <div style={{ display: 'flex', gap: '5px' }}>
                   {[1, 2, 3, 4, 5].map((n) => (
                     <div
                       key={n}
                       style={{
                         flex: 1,
-                        height: '36px',
-                        borderRadius: '10px',
+                        height: '30px',
+                        borderRadius: '8px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '0.9375rem',
+                        fontSize: '0.875rem',
                         fontWeight: 600,
                         background: n === active ? '#5C4A5E' : '#FAFAF7',
                         color: n === active ? '#FFF' : '#8A8F86',
