@@ -30,8 +30,8 @@ const steps = [
   {
     id: 5,
     label: 'Patterns',
-    heading: 'Learn from the difference.',
-    copy: 'Patterns shows you 28 days of capacity, morning factors, and evening symptoms in one view. See when harder days cluster, what tends to precede them, and how your capacity shifts around health changes or life events.',
+    heading: 'See what the data is showing you.',
+    copy: 'Patterns surfaces three types of insight from your last 28 days: what harder days have in common, good signs that show what tends to help, and for ADHD profiles, executive function observations about planning versus completion. The insights adapt based on your profile.',
   },
 ] as const
 
@@ -241,13 +241,14 @@ function StepScreen({ step }: { step: number }) {
         <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>Last 28 days</div>
       </div>
       <div style={{ padding: '18px', display: 'grid', gap: '12px' }}>
-        {[
-          'You started Steady but finished Low Battery on 4 of the last 7 days.',
-          'Brain fog appears more often after disturbed sleep.',
-          'Low Battery mornings recover to Steady 40% of the time.',
-        ].map((item) => (
-          <div key={item} style={{ ...surfaceStyle, padding: '14px 16px', fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55 }}>
-            &ldquo;{item}&rdquo;
+        {([
+          { label: 'What I\'ve Learned', text: 'Overwhelm has appeared on 5 of your last 7 high-demand days.' },
+          { label: 'Good Signs', text: 'Your Momentum mornings are more common after sleep scores of 4 or 5.' },
+          { label: 'Focus Patterns', text: 'You plan more tasks than you complete on Low Battery days. Three or fewer tends to hold.' },
+        ] as const).map((item) => (
+          <div key={item.label} style={{ ...surfaceStyle, padding: '14px 16px' }}>
+            <div style={{ fontSize: '0.6875rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '6px' }}>{item.label}</div>
+            <div style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55 }}>{item.text}</div>
           </div>
         ))}
       </div>

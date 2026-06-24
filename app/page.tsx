@@ -11,7 +11,7 @@ const helpCards = [
   },
   {
     title: 'Notice the patterns',
-    body: 'See when brain fog, overwhelm, poor sleep and low battery days tend to show up, and what tends to come before them.',
+    body: 'Patterns surfaces three types of insight: what harder days have in common, what seems to help (good signs), and for ADHD profiles, executive function observations about how you plan and complete tasks.',
   },
   {
     title: 'Built for executive dysfunction',
@@ -151,7 +151,7 @@ export default function LandingPage() {
                   Some days you have energy, focus and momentum. Other days you&apos;re running on poor sleep, brain fog, overwhelm, hormone changes, stress, or simply too much life. Steady helps you plan around the capacity you actually have, notice the patterns behind harder days, and adjust when reality changes.
                 </p>
                 <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#6A6F68', margin: '0 0 28px', maxWidth: '37rem' }}>
-                  Whether that&apos;s ADHD, perimenopause, menopause, poor sleep or everyday life pressures, Steady helps you work with your day instead of fighting it.
+                  Steady adapts to your profile. Onboarding asks whether you are neurodivergent. If you are, the Patterns screen surfaces executive function observations specific to ADHD. Perimenopause, menopause, and hormone changes are there to log alongside everything else.
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
@@ -308,7 +308,7 @@ export default function LandingPage() {
                           Patterns
                         </div>
                         <div style={{ fontSize: '0.9rem', lineHeight: 1.55, color: '#4A4E47' }}>
-                          Brain fog shows up more often after poor sleep.
+                          Overwhelm has clustered after 3 or more high-demand days in a row.
                         </div>
                       </div>
 
@@ -322,7 +322,7 @@ export default function LandingPage() {
                           Nudges
                         </div>
                         <div style={{ fontSize: '0.9rem', lineHeight: 1.55, color: '#4A4E47' }}>
-                          Gentle reminders, only if you want them.
+                          Morning, midday, and evening nudges. Only if you want them.
                         </div>
                       </div>
                     </div>
