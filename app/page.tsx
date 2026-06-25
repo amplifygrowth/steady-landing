@@ -4,328 +4,204 @@ import HowSteadyWorks from '@/components/how-steady-works'
 
 const APP_URL = process.env.NEXT_PUBLIC_STEADY_APP_URL || 'http://localhost:3000'
 
-const helpCards = [
+const CAP_COLOR: Record<string, string> = { green: '#4A7B5C', amber: '#6B83A0', red: '#B96A6A' }
+
+const CAP28 = [
+  'red','amber','amber','green','amber','red','amber',
+  'green','green','amber','red','amber','green','amber',
+  'amber','red','green','amber','amber','green','red',
+  'amber','green','green','amber','amber','red','amber',
+] as const
+
+const CP_ROWS = [
+  { label: 'Momentum',    color: '#4A7B5C', textColor: '#2D5A3D', pct: 87, planned: 3.2, done: 2.8, days: 12 },
+  { label: 'Steady',      color: '#6B83A0', textColor: '#3A506B', pct: 67, planned: 3.1, done: 2.1, days: 9  },
+  { label: 'Low Battery', color: '#B96A6A', textColor: '#7A3030', pct: 48, planned: 3.0, done: 1.4, days: 7  },
+]
+
+const FOUR_SECTIONS = [
   {
-    title: 'Plan around real capacity',
-    body: 'Start with how you actually are, then separate what still has to happen from what can wait.',
+    label: 'Non-Negotiables',
+    accent: '#5C4A5E',
+    bg: '#F3F0F4',
+    border: '#D8D2D9',
+    purpose: 'Memory support',
+    desc: 'Work, appointments, school run. Fixed commitments that need to happen. They appear as reminders, not tasks — because brain fog, ADHD and menopause can make even important things easy to lose track of.',
+    items: ['Work 9–5', 'GP appointment 2pm', 'School pickup 3:30pm'],
   },
   {
-    title: 'Notice the patterns',
-    body: 'Patterns surfaces three types of insight: what harder days have in common, what seems to help (good signs), and for ADHD profiles, executive function observations about how you plan and complete tasks.',
+    label: 'Basics',
+    accent: '#3A7A50',
+    bg: '#EAF4EE',
+    border: '#B8D9C4',
+    purpose: 'Maintenance',
+    desc: 'The everyday things that keep life functioning. For many users these are exactly the tasks executive dysfunction makes hard — washing up, mopping the floor, taking medication. They reset fresh every day. Never a debt from yesterday.',
+    items: ['Reset the kitchen', 'Take medication', 'Move your body'],
   },
   {
-    title: 'Built for executive dysfunction',
-    body: 'The three-task limit for today isn\'t arbitrary. Choosing from an open list takes more cognitive effort than the task itself. Three gives your brain somewhere to start.',
+    label: 'Today',
+    accent: '#5C4A5E',
+    bg: '#F3F0F4',
+    border: '#D8D2D9',
+    purpose: 'Executive dysfunction support',
+    desc: 'Up to three things you want to attempt. The cap is deliberate. Executive dysfunction makes choosing from a long open list harder than the task itself. Three gives your brain somewhere to start instead of something to get stuck in.',
+    items: ['Make GP appointment', 'Send clothes order back', 'Reply to that email'],
   },
   {
-    title: 'The worry jar',
-    body: 'Get it out of your head. Worries sit quietly and are gone by morning. Held, not ignored, and not cluttering your day.',
+    label: 'Later',
+    accent: '#4A6A8A',
+    bg: '#E4EAF0',
+    border: '#B8C8D9',
+    purpose: 'Capture',
+    desc: 'Every idea your brain offers while you\'re already busy with something else. Parked and safe — not forgotten, not today\'s pressure. ADHD brains generate ideas constantly. Later gives them somewhere to land without becoming overwhelm.',
+    items: ['Research new phone contract', 'Look into that course', 'Check holiday dates'],
+  },
+]
+
+const WHO_FOR = [
+  {
+    heading: 'ADHD — diagnosed, suspected or self-identified',
+    body: 'Executive dysfunction means the gap between wanting to do something and actually starting it can feel impossible. Steady works with that reality, not against it. The three-task cap, the Later capture space and the Focus Patterns section are all built with ADHD in mind.',
+  },
+  {
+    heading: 'Perimenopause and menopause',
+    body: 'Brain fog, memory lapses, fluctuating energy and unpredictable focus are real symptoms, not personal failings. Steady helps you track what affects your capacity and see patterns in how those symptoms show up across your days.',
+  },
+  {
+    heading: 'Fluctuating executive function',
+    body: 'You don\'t need a diagnosis for Steady to help. If your ability to start tasks, hold focus or manage your day varies from one morning to the next — for any reason — Steady is built for exactly that experience.',
+  },
+  {
+    heading: 'Anyone who\'s felt failed by productivity systems',
+    body: 'Most planning tools assume a consistent brain. They reward streaks, punish missed days and treat changing plans as failure. Steady assumes the opposite: that your capacity changes, that your plan should change with it, and that understanding your patterns is more useful than trying to override them.',
   },
 ]
 
 export default function LandingPage() {
   return (
-    <main style={{ minHeight: '100vh' }}>
+    <main style={{ minHeight: '100vh', background: '#FAFAF7' }}>
       <style>{`
-        .landing-shell {
-          max-width: 74rem;
-          margin: 0 auto;
+        .ls { max-width: 74rem; margin: 0 auto; }
+        .hero-grid { display: grid; gap: 32px; align-items: center; }
+        .four-grid { display: grid; gap: 14px; }
+        .cp-track { position: relative; height: 10px; background: #F0F1EC; border-radius: 5px; margin-bottom: 5px; }
+        .cp-fill { position: absolute; inset: 0 auto 0 0; border-radius: 5px; opacity: 0.85; }
+        .who-grid { display: grid; gap: 16px; }
+        .help-grid { display: grid; gap: 14px; }
+        @media (min-width: 860px) {
+          .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr); gap: 48px; }
+          .four-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .who-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .help-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         }
-
-        .hero-panel {
-          border-radius: 32px;
-          border: 1px solid rgba(229, 224, 232, 0.92);
-          background:
-            linear-gradient(135deg, rgba(244,239,247,0.92) 0%, rgba(255,255,255,0.82) 42%, rgba(249,247,242,0.9) 100%),
-            radial-gradient(circle at top left, rgba(92,74,94,0.18), transparent 40%),
-            radial-gradient(circle at 82% 20%, rgba(107,131,160,0.18), transparent 34%),
-            radial-gradient(circle at bottom right, rgba(232, 240, 234, 0.92), transparent 42%);
-          box-shadow: 0 24px 68px rgba(92, 74, 94, 0.13);
-          overflow: hidden;
-        }
-
-        .hero-grid {
-          display: grid;
-          gap: 28px;
-          align-items: center;
-        }
-
-        .hero-mock-wrap {
-          position: relative;
-          min-height: 0;
-        }
-
-        .hero-mock-wrap::before {
-          content: "";
-          position: absolute;
-          inset: 8% -4% auto 18%;
-          height: 72%;
-          border-radius: 9999px;
-          background: radial-gradient(circle, rgba(92,74,94,0.18) 0%, rgba(107,131,160,0.12) 38%, rgba(255,255,255,0) 72%);
-          filter: blur(10px);
-          pointer-events: none;
-        }
-
-        .help-grid {
-          display: grid;
-          gap: 16px;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .hero-inner {
-          padding: 28px 20px;
-        }
-
-        @media (min-width: 900px) {
-          .hero-grid {
-            grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
-            gap: 40px;
-          }
-
-          .help-grid {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-          }
-
-          .hero-inner {
-            padding: 40px 36px;
-          }
+        @media (min-width: 1100px) {
+          .four-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
         }
       `}</style>
 
-      <section style={{ padding: '24px 20px 56px' }}>
-        <div className="landing-shell">
-          <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '28px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Image src="/icon.svg" alt="" width={24} height={24} style={{ width: '24px', height: '24px', flexShrink: 0 }} />
-              <span className="font-display" style={{ fontSize: '1.6rem', color: '#2B2F2A' }}>Steady</span>
-            </div>
-            <Link
-              href={APP_URL}
-              style={{
-                padding: '10px 14px',
-                borderRadius: '12px',
-                border: '1.5px solid #D8D2D9',
-                color: '#5C4A5E',
-                textDecoration: 'none',
-                fontSize: '0.9375rem',
-                fontWeight: 600,
-              }}
-            >
-              Sign in
-            </Link>
-          </header>
+      {/* ── Header ──────────────────────────────────────────────────────── */}
+      <header style={{ padding: '20px 20px 0' }}>
+        <div className="ls" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Image src="/icon.svg" alt="" width={22} height={22} style={{ width: '22px', height: '22px', flexShrink: 0 }} />
+            <span className="font-display" style={{ fontSize: '1.5rem', color: '#2B2F2A' }}>Steady</span>
+          </div>
+          <Link
+            href={APP_URL}
+            style={{ padding: '10px 14px', borderRadius: '12px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '0.9375rem', fontWeight: 600 }}
+          >
+            Sign in
+          </Link>
+        </div>
+      </header>
 
-          <div className="hero-panel">
-            <div className="hero-grid hero-inner">
+      {/* ── Hero ────────────────────────────────────────────────────────── */}
+      <section style={{ padding: '24px 20px 48px' }}>
+        <div className="ls">
+          <div style={{
+            borderRadius: '32px',
+            background: 'linear-gradient(135deg, rgba(244,239,247,0.95) 0%, rgba(255,255,255,0.85) 42%, rgba(249,247,242,0.92) 100%)',
+            border: '1px solid rgba(229,224,232,0.92)',
+            boxShadow: '0 24px 68px rgba(92,74,94,0.12)',
+            overflow: 'hidden',
+          }}>
+            <div className="hero-grid" style={{ padding: '36px 28px' }}>
               <div>
-                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '14px' }}>
-                  steady.capablemind.app
-                </div>
-
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  borderRadius: '9999px',
-                  padding: '8px 12px',
-                  marginBottom: '18px',
-                  background: 'rgba(92,74,94,0.08)',
-                  border: '1px solid rgba(92,74,94,0.12)',
-                  color: '#5C4A5E',
-                  fontSize: '0.8125rem',
-                  fontWeight: 600,
-                }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', borderRadius: '9999px', padding: '7px 12px', marginBottom: '20px', background: 'rgba(92,74,94,0.08)', border: '1px solid rgba(92,74,94,0.12)', color: '#5C4A5E', fontSize: '0.8125rem', fontWeight: 600 }}>
                   <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: '#5C4A5E' }} />
                   Daily planning for changing capacity
                 </div>
 
-                <h1 className="font-display" style={{ fontSize: 'clamp(3rem, 7vw, 5.2rem)', lineHeight: 0.96, color: '#2B2F2A', marginBottom: '16px' }}>
+                <h1 className="font-display" style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5rem)', lineHeight: 0.96, color: '#2B2F2A', marginBottom: '16px' }}>
                   Steady
                 </h1>
-
-                <p className="font-display" style={{ fontSize: 'clamp(1.25rem, 2.8vw, 2rem)', lineHeight: 1.3, color: '#2B2F2A', margin: '0 0 18px' }}>
-                  For midlife women whose capacity changes from day to day.
+                <p className="font-display" style={{ fontSize: 'clamp(1.4rem, 3.2vw, 2.3rem)', lineHeight: 1.1, color: '#2B2F2A', margin: '0 0 20px', maxWidth: '16ch' }}>
+                  For women whose capacity changes from day to day.
                 </p>
-
-                <p style={{ fontSize: '1.08rem', lineHeight: 1.85, color: '#4A4E47', margin: '0 0 28px', maxWidth: '38rem' }}>
-                  Some days you have energy, focus and momentum. Other days you&apos;re running on poor sleep, brain fog, overwhelm, hormone changes, stress, or simply too much life. Steady helps you plan around the capacity you actually have, notice the patterns behind harder days, and adjust when reality changes.
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 0 12px', maxWidth: '40rem' }}>
+                  Most planning apps assume your brain shows up the same way every morning. Steady doesn&apos;t. It starts with how you actually are, helps you plan around what&apos;s real, and over time shows you why some days are harder than they should be.
                 </p>
-                <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#6A6F68', margin: '0 0 28px', maxWidth: '37rem' }}>
-                  Steady adapts to your profile. Onboarding asks whether you are neurodivergent. If you are, the Patterns screen surfaces executive function observations specific to ADHD. Perimenopause, menopause, and hormone changes are there to log alongside everything else.
+                <p style={{ fontSize: '0.9375rem', lineHeight: 1.8, color: '#6A6F68', margin: '0 0 24px', maxWidth: '38rem' }}>
+                  Whether that&apos;s ADHD, perimenopause, menopause, brain fog, executive dysfunction, poor sleep or the weight of a full life — Steady works with your brain instead of expecting it to perform.
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
                   <Link
                     href={APP_URL}
-                    style={{
-                      padding: '14px 18px',
-                      borderRadius: '14px',
-                      background: '#5C4A5E',
-                      color: '#FFF',
-                      textDecoration: 'none',
-                      fontSize: '1rem',
-                      fontWeight: 600,
-                    }}
+                    style={{ padding: '13px 20px', borderRadius: '14px', background: '#5C4A5E', color: '#FFF', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
                   >
-                    Get started
+                    Get started free
                   </Link>
                   <Link
                     href="/why"
-                    style={{
-                      padding: '14px 18px',
-                      borderRadius: '14px',
-                      border: '1.5px solid #D8D2D9',
-                      color: '#5C4A5E',
-                      textDecoration: 'none',
-                      fontSize: '1rem',
-                      fontWeight: 600,
-                    }}
+                    style={{ padding: '13px 20px', borderRadius: '14px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
                   >
                     Why this exists
                   </Link>
                 </div>
 
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  borderRadius: '9999px',
-                  padding: '10px 14px',
-                  background: 'rgba(92,74,94,0.08)',
-                  border: '1px solid rgba(92,74,94,0.14)',
-                  color: '#4A4E47',
-                  fontSize: '0.9375rem',
-                  marginBottom: '32px',
-                }}>
-                  <span style={{ color: '#5C4A5E', fontWeight: 700 }}>•</span>
-                  Free for the first 100 users in exchange for honest feedback.
-                </div>
-
-                <div style={{
-                  maxWidth: '34rem',
-                  paddingLeft: '14px',
-                  borderLeft: '3px solid rgba(92,74,94,0.18)',
-                }}>
-                  <p className="font-display" style={{ fontSize: '1.16rem', lineHeight: 1.5, color: '#2B2F2A', margin: '0 0 8px' }}>
-                    Plan around the capacity you have, not the capacity you wish you had.
-                  </p>
-                  <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#6A6F68', margin: 0 }}>
-                    &ldquo;I didn&apos;t need another to-do app. I needed something that could work with a changing brain and a full life.&rdquo;
-                  </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 14px', borderRadius: '9999px', background: 'rgba(74,123,92,0.1)', border: '1px solid rgba(74,123,92,0.2)', color: '#2D5A3D', fontSize: '0.875rem' }}>
+                  <span style={{ fontWeight: 700 }}>•</span>
+                  Free for the first 100 users in exchange for honest feedback
                 </div>
               </div>
 
-              <div className="hero-mock-wrap">
-                <div style={{
-                  borderRadius: '32px',
-                  padding: '18px',
-                  background: 'linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.84))',
-                  border: '1px solid rgba(92,74,94,0.12)',
-                  boxShadow: '0 22px 48px rgba(92,74,94,0.16)',
-                  position: 'relative',
-                  zIndex: 1,
-                }}>
-                  <div style={{ padding: '6px 4px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              {/* Hero mock — Today screen */}
+              <div style={{ position: 'relative' }}>
+                <div style={{ position: 'absolute', inset: '6% -6% auto 14%', height: '70%', borderRadius: '9999px', background: 'radial-gradient(circle, rgba(92,74,94,0.15) 0%, transparent 70%)', filter: 'blur(12px)', pointerEvents: 'none' }} />
+                <div style={{ position: 'relative', zIndex: 1, borderRadius: '28px', padding: '20px', background: 'rgba(255,255,255,0.92)', border: '1px solid rgba(92,74,94,0.10)', boxShadow: '0 20px 50px rgba(92,74,94,0.15)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <Image src="/icon.svg" alt="" width={18} height={18} style={{ width: '18px', height: '18px' }} />
-                      <span style={{ fontSize: '0.95rem', color: '#5C4A5E', fontWeight: 600 }}>Steady</span>
+                      <Image src="/icon.svg" alt="" width={16} height={16} style={{ width: '16px', height: '16px' }} />
+                      <span style={{ fontSize: '0.875rem', color: '#5C4A5E', fontWeight: 600 }}>Steady</span>
                     </div>
-                    <span style={{ fontSize: '0.75rem', color: '#9A9E96' }}>Thursday 18 June</span>
+                    <span style={{ fontSize: '0.6875rem', color: '#9A9E96' }}>Wednesday · Steady day</span>
                   </div>
 
-                  <div style={{ display: 'grid', gap: '12px' }}>
-                    <div style={{
-                      borderRadius: '22px',
-                      padding: '18px',
-                      background: '#E4EAF0',
-                      border: '1px solid rgba(107,131,160,0.18)',
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                        <span style={{ width: '8px', height: '8px', borderRadius: '9999px', background: '#6B83A0' }} />
-                        <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#6B83A0', fontWeight: 700 }}>
-                          Steady day
-                        </span>
-                      </div>
-                      <div className="font-display" style={{ fontSize: '1.9rem', lineHeight: 1.15, color: '#2B2F2A', marginBottom: '10px' }}>
-                        Two real things done beats three half-started.
-                      </div>
-                      <div style={{ fontSize: '0.9rem', lineHeight: 1.6, color: '#6B83A0' }}>
-                        Capacity can change. Adjust today if reality has shifted.
-                      </div>
+                  <div style={{ borderRadius: '18px', padding: '14px 16px', background: '#E4EAF0', border: '1px solid rgba(107,131,160,0.2)', marginBottom: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '6px' }}>
+                      <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#6B83A0', display: 'inline-block' }} />
+                      <span style={{ fontSize: '0.6875rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#6B83A0', fontWeight: 700 }}>Steady day</span>
                     </div>
+                    <p className="font-display" style={{ fontSize: '1.1rem', lineHeight: 1.2, color: '#2B2F2A', margin: '0 0 4px' }}>Two real things done beats three half-started.</p>
+                  </div>
 
-                    <div style={{
-                      borderRadius: '22px',
-                      padding: '16px',
-                      background: 'rgba(255,255,255,0.90)',
-                      border: '1px solid #ECE8EE',
-                    }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', marginBottom: '12px' }}>
-                        <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#5C4A5E' }}>Non-Negotiables</span>
-                        <span style={{ fontSize: '0.75rem', color: '#9A9E96' }}>still happening</span>
-                      </div>
-                      <div style={{ display: 'grid', gap: '8px', marginBottom: '14px' }}>
-                        {['Work 9-5', 'School run 3:30pm'].map((item) => (
-                          <div key={item} style={{ fontSize: '0.95rem', color: '#2B2F2A' }}>{item}</div>
-                        ))}
-                      </div>
-
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', marginBottom: '12px' }}>
-                        <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#5C4A5E' }}>Today</span>
-                        <span style={{ fontSize: '0.75rem', color: '#9A9E96' }}>2 of 3 chosen</span>
-                      </div>
-                      <div style={{ display: 'grid', gap: '10px' }}>
-                        {['Book the HRT review', 'Chase the insurance'].map((item) => (
-                          <div
-                            key={item}
-                            style={{
-                              borderRadius: '14px',
-                              padding: '12px 14px',
-                              background: '#FFFFFF',
-                              border: '1px solid #ECE8EE',
-                              fontSize: '0.95rem',
-                              color: '#2B2F2A',
-                            }}
-                          >
-                            {item}
-                          </div>
-                        ))}
-                      </div>
+                  {[
+                    { label: 'Non-Negotiables', items: ['Work 9–5', 'School pickup 3:30'] },
+                    { label: 'Basics', items: ['Reset the kitchen ✓', 'Take medication'] },
+                    { label: 'Today', items: ['Make GP appointment', 'Send clothes order back'] },
+                  ].map(({ label, items }) => (
+                    <div key={label} style={{ borderRadius: '14px', padding: '12px 14px', background: '#FAFAF7', border: '1px solid #ECE8EE', marginBottom: '8px' }}>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#5C4A5E', marginBottom: '7px' }}>{label}</div>
+                      {items.map(item => (
+                        <div key={item} style={{ fontSize: '0.875rem', color: '#2B2F2A', paddingBottom: '4px' }}>{item}</div>
+                      ))}
                     </div>
+                  ))}
 
-                    <div style={{
-                      display: 'grid',
-                      gap: '10px',
-                      gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
-                    }}>
-                      <div style={{
-                        borderRadius: '18px',
-                        padding: '14px',
-                        background: 'rgba(255,255,255,0.82)',
-                        border: '1px solid rgba(229,224,232,0.92)',
-                      }}>
-                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '8px' }}>
-                          Patterns
-                        </div>
-                        <div style={{ fontSize: '0.9rem', lineHeight: 1.55, color: '#4A4E47' }}>
-                          Overwhelm has clustered after 3 or more high-demand days in a row.
-                        </div>
-                      </div>
-
-                      <div style={{
-                        borderRadius: '18px',
-                        padding: '14px',
-                        background: 'rgba(255,255,255,0.82)',
-                        border: '1px solid rgba(229,224,232,0.92)',
-                      }}>
-                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '8px' }}>
-                          Nudges
-                        </div>
-                        <div style={{ fontSize: '0.9rem', lineHeight: 1.55, color: '#4A4E47' }}>
-                          Morning, midday, and evening nudges. Only if you want them.
-                        </div>
-                      </div>
-                    </div>
+                  <div style={{ borderRadius: '14px', padding: '10px 14px', background: '#E4EAF0', border: '1px solid rgba(107,131,160,0.2)', marginTop: '4px' }}>
+                    <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#4A6A8A', marginBottom: '4px' }}>Later</div>
+                    <div style={{ fontSize: '0.8125rem', color: '#6A6F68' }}>Research new phone contract · Look into that course</div>
                   </div>
                 </div>
               </div>
@@ -334,37 +210,64 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section style={{ padding: '56px 20px 72px' }}>
-        <div className="landing-shell">
-          <div style={{ maxWidth: '36rem', marginBottom: '22px' }}>
-            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
-              What Steady helps with
+      {/* ── The question ────────────────────────────────────────────────── */}
+      <section style={{ padding: '0 20px 72px' }}>
+        <div className="ls">
+          <div style={{ maxWidth: '54rem', margin: '0 auto' }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '16px' }}>
+              The question Steady exists to answer
             </div>
-            <h2 className="font-display" style={{ fontSize: '2.15rem', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '10px' }}>
-              A calmer way to hold a full day.
+            <h2 className="font-display" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', lineHeight: 1.05, color: '#2B2F2A', marginBottom: '24px' }}>
+              &ldquo;Why couldn&apos;t I get the things done that I wanted to do today?&rdquo;
             </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: 0, maxWidth: '34rem' }}>
-              Steady is for the days when your head is busy, your battery is mixed, and one giant list makes everything feel worse.
+            <div style={{ display: 'grid', gap: '16px' }}>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
+                For women living with ADHD, executive dysfunction, perimenopause, menopause or fluctuating capacity, this question arrives often — and rarely gets a useful answer. Standard productivity advice says plan better, be more consistent, try harder. But when your brain&apos;s ability to start and finish tasks changes from day to day, the problem isn&apos;t the plan. The system was built for a different kind of brain.
+              </p>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
+                Executive dysfunction isn&apos;t laziness or lack of motivation. It&apos;s a real barrier between wanting to do something and being able to start it. Brain fog isn&apos;t tiredness — it&apos;s cognitive impairment that affects memory, focus and decision-making. These experiences are real, they fluctuate, and they deserve a tool that takes them seriously.
+              </p>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
+                Steady doesn&apos;t coach you to be more productive. It helps you understand what your brain can actually do at different capacity levels, based on your own data — so you can plan realistically, stop blaming yourself for hard days, and start noticing what actually helps.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Four kinds of support ────────────────────────────────────────── */}
+      <section style={{ padding: '0 20px 72px' }}>
+        <div className="ls">
+          <div style={{ maxWidth: '40rem', marginBottom: '32px' }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
+              How the Today screen works
+            </div>
+            <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
+              This isn&apos;t a task list. It&apos;s four different kinds of support.
+            </h2>
+            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6A6F68', margin: 0 }}>
+              Each section solves a different problem that fluctuating executive function creates. They don&apos;t blend into each other — they each do one specific thing.
             </p>
           </div>
 
-          <div className="help-grid">
-            {helpCards.map((item) => (
-              <div
-                key={item.title}
-                style={{
-                  borderRadius: '22px',
-                  padding: '20px',
-                  background: 'rgba(255,255,255,0.66)',
-                  border: '1px solid rgba(229,224,232,0.9)',
-                  boxShadow: '0 8px 24px rgba(92,74,94,0.06)',
-                }}
-              >
-                <div style={{ fontSize: '1rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>
-                  {item.title}
+          <div className="four-grid">
+            {FOUR_SECTIONS.map((s) => (
+              <div key={s.label} style={{ borderRadius: '22px', padding: '22px', background: s.bg, border: `1.5px solid ${s.border}` }}>
+                <div style={{ fontSize: '0.6875rem', textTransform: 'uppercase', letterSpacing: '0.07em', color: s.accent, fontWeight: 700, marginBottom: '6px' }}>
+                  {s.purpose}
                 </div>
-                <div style={{ fontSize: '0.95rem', lineHeight: 1.7, color: '#6A6F68' }}>
-                  {item.body}
+                <div style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#2B2F2A', marginBottom: '10px' }}>
+                  {s.label}
+                </div>
+                <p style={{ fontSize: '0.875rem', lineHeight: 1.65, color: '#4A4E47', margin: '0 0 14px' }}>
+                  {s.desc}
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  {s.items.map(item => (
+                    <div key={item} style={{ fontSize: '0.8125rem', color: '#5A5E56', padding: '7px 10px', borderRadius: '9px', background: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.9)' }}>
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -372,158 +275,244 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section style={{ padding: '0 20px 72px' }}>
-        <div style={{ maxWidth: '36rem', margin: '0 auto' }}>
-          <div style={{
-            borderRadius: '24px',
-            padding: '32px 28px',
-            background: 'rgba(255,255,255,0.72)',
-            border: '1px solid rgba(229,224,232,0.9)',
-            boxShadow: '0 10px 30px rgba(92,74,94,0.08)',
-          }}>
-            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
-              Early access
-            </div>
-            <h2 className="font-display" style={{ fontSize: '1.8rem', lineHeight: 1.1, color: '#2B2F2A', marginBottom: '10px' }}>
-              Free for the first 100 users.
-            </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: '0 0 20px' }}>
-              In exchange for honest feedback. Leave your email and we will let you know when a spot opens.
-            </p>
-            <form
-              action="https://formspree.io/f/placeholder"
-              method="POST"
-              style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}
-            >
-              <input
-                type="email"
-                name="email"
-                placeholder="your@email.com"
-                required
-                style={{
-                  flex: '1 1 200px',
-                  padding: '12px 16px',
-                  borderRadius: '12px',
-                  border: '1.5px solid #E3E4DE',
-                  fontSize: '1rem',
-                  color: '#2B2F2A',
-                  background: '#FAFAF7',
-                  outline: 'none',
-                  fontFamily: 'inherit',
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  padding: '12px 20px',
-                  borderRadius: '12px',
-                  background: '#5C4A5E',
-                  color: '#FFF',
-                  border: 'none',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  fontFamily: 'inherit',
-                  touchAction: 'manipulation',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Keep me posted
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
+      {/* ── How a day works (interactive walkthrough) ────────────────────── */}
       <HowSteadyWorks />
 
+      {/* ── What you learn over time (Patterns) ─────────────────────────── */}
       <section style={{ padding: '0 20px 72px' }}>
-        <div style={{ maxWidth: '52rem', margin: '0 auto', textAlign: 'center' }}>
-          <div style={{
-            borderRadius: '28px',
-            padding: '34px 24px',
-            background: 'rgba(255,255,255,0.72)',
-            border: '1px solid rgba(229,224,232,0.9)',
-            boxShadow: '0 10px 30px rgba(92,74,94,0.08)',
-          }}>
-            <h2 className="font-display" style={{ fontSize: '2.1rem', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
-              Built for the days your brain says no.
+        <div className="ls">
+          <div style={{ maxWidth: '40rem', marginBottom: '36px' }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
+              What you learn over time
+            </div>
+            <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
+              Understanding why some days are harder than they should be.
             </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: '0 auto 20px', maxWidth: '36rem' }}>
-              Start with a quick check-in, plan around what&apos;s already real, and stop expecting a hard day to behave like an easy one.
+            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: 0 }}>
+              After a week or so of check-ins, Steady starts building a picture of how your capacity affects what actually gets done. The Patterns screen answers the question you&apos;ve probably been asking in the dark.
             </p>
-            <Link
-              href={APP_URL}
-              style={{
-                display: 'inline-block',
-                padding: '14px 18px',
-                borderRadius: '14px',
-                background: '#5C4A5E',
-                color: '#FFF',
-                textDecoration: 'none',
-                fontSize: '1rem',
-                fontWeight: 600,
-              }}
-            >
-              Try Steady
-            </Link>
+          </div>
+
+          <div style={{ display: 'grid', gap: '20px' }}>
+            {/* Capacity bar — 28 days */}
+            <div style={{ borderRadius: '22px', padding: '24px', background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(229,224,232,0.9)', boxShadow: '0 6px 24px rgba(92,74,94,0.06)' }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '14px' }}>
+                Last 28 days
+              </div>
+              <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                {CAP28.map((cap, i) => (
+                  <div key={i} style={{ width: '22px', height: '22px', borderRadius: '6px', background: CAP_COLOR[cap], opacity: 0.85, flexShrink: 0 }} />
+                ))}
+              </div>
+              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                {(['green','amber','red'] as const).map(cap => {
+                  const count = CAP28.filter(c => c === cap).length
+                  const labels = { green: 'Momentum', amber: 'Steady', red: 'Low Battery' }
+                  return (
+                    <div key={cap} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div style={{ width: '10px', height: '10px', borderRadius: '3px', background: CAP_COLOR[cap] }} />
+                      <span style={{ fontSize: '0.8125rem', color: '#7A7E76' }}>{labels[cap]} · {count} days</span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Capacity & Progress — seeded */}
+            <div style={{ borderRadius: '22px', padding: '24px', background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(229,224,232,0.9)', boxShadow: '0 6px 24px rgba(92,74,94,0.06)' }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '16px' }}>
+                Capacity &amp; Progress
+              </div>
+
+              <p className="font-display" style={{ fontSize: '1.35rem', lineHeight: 1.25, color: '#2B2F2A', margin: '0 0 20px' }}>
+                Planning stayed consistent. Completion didn&apos;t.
+              </p>
+
+              <div style={{ display: 'grid', gap: '18px', marginBottom: '20px' }}>
+                {CP_ROWS.map(row => (
+                  <div key={row.label}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                        <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: row.color, flexShrink: 0 }} />
+                        <span style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#2B2F2A' }}>{row.label}</span>
+                      </div>
+                      <span style={{ fontSize: '0.875rem', fontWeight: 700, color: row.textColor }}>{row.pct}%</span>
+                    </div>
+                    <div className="cp-track">
+                      <div className="cp-fill" style={{ width: `${row.pct}%`, background: row.color }} />
+                    </div>
+                    <p style={{ fontSize: '0.75rem', color: '#9A9E96', margin: 0, lineHeight: 1.4 }}>
+                      {row.planned.toFixed(1)} planned · {row.done.toFixed(1)} done · {row.days} days
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ borderTop: '1px solid #F0F1EC', paddingTop: '16px', display: 'grid', gap: '12px' }}>
+                <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>
+                  You planned a similar number of tasks regardless of battery level — around 3 each day. On Low Battery days, you completed 48% of them. On Momentum days, 87%. The difference isn&apos;t the plan. It&apos;s the capacity.
+                </p>
+                <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>
+                  Basics stayed more consistent across capacity levels than planned tasks did.
+                </p>
+              </div>
+            </div>
+
+            {/* What I've learned */}
+            <div style={{ borderRadius: '22px', padding: '24px', background: '#F3F0F4', border: '1.5px solid rgba(92,74,94,0.12)', boxShadow: '0 6px 24px rgba(92,74,94,0.06)' }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#5C4A5E', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '14px' }}>
+                What I&apos;ve learned
+              </div>
+              <div style={{ display: 'grid', gap: '12px' }}>
+                {[
+                  'Brain fog appears more often after disturbed sleep or fewer than 5 hours.',
+                  'Low Battery mornings recover to Steady by end of day around 40% of the time.',
+                  'You started Steady but finished Low Battery on 4 of the last 7 days — usually after 2pm.',
+                ].map((obs, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#5C4A5E', flexShrink: 0, marginTop: '6px' }} />
+                    <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.5, margin: 0 }}>{obs}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <footer style={{ padding: '0 20px 72px' }}>
-        <div style={{
-          maxWidth: '52rem',
-          margin: '0 auto',
-          borderRadius: '24px',
-          padding: '24px',
-          background: 'rgba(255,255,255,0.62)',
-          border: '1px solid rgba(229,224,232,0.9)',
-        }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '18px' }}>
-            <Link
-              href="/privacy"
-              style={{
-                padding: '10px 14px',
-                borderRadius: '12px',
-                border: '1.5px solid #D8D2D9',
-                color: '#5C4A5E',
-                textDecoration: 'none',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-              }}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              style={{
-                padding: '10px 14px',
-                borderRadius: '12px',
-                border: '1.5px solid #D8D2D9',
-                color: '#5C4A5E',
-                textDecoration: 'none',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-              }}
-            >
-              Terms of Service
-            </Link>
+      {/* ── Daily Reflection ─────────────────────────────────────────────── */}
+      <section style={{ padding: '0 20px 72px' }}>
+        <div className="ls">
+          <div style={{ display: 'grid', gap: '32px', alignItems: 'center' }}>
+            <div style={{ maxWidth: '38rem' }}>
+              <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
+                Daily Reflection
+              </div>
+              <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '16px' }}>
+                At the end of the day, one honest observation.
+              </h2>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 0 14px' }}>
+                After your evening close, Steady looks at what actually happened and offers a single sentence based on your own data. Not encouragement. Not a score. An observation grounded in your history.
+              </p>
+              <p style={{ fontSize: '0.9375rem', lineHeight: 1.8, color: '#6A6F68', margin: 0 }}>
+                On a Low Battery day where you completed more tasks than usual, it notices. On a day where your basics held steady even when everything else fell away, it notices that too. It only says something when there&apos;s something real to say.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gap: '10px', maxWidth: '26rem' }}>
+              {[
+                { cap: 'amber', obs: 'You completed more tasks than usual for a Steady day.' },
+                { cap: 'red',   obs: 'Your basics stayed consistent even on a Low Battery day.' },
+                { cap: 'red',   obs: 'You started Low Battery and finished Steady.' },
+              ].map((ex, i) => (
+                <div key={i} style={{ borderRadius: '18px', padding: '16px 18px', background: 'rgba(255,255,255,0.88)', border: '1px solid rgba(229,224,232,0.9)', boxShadow: '0 4px 16px rgba(92,74,94,0.06)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: CAP_COLOR[ex.cap], flexShrink: 0 }} />
+                    <span style={{ fontSize: '0.6875rem', fontWeight: 700, color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Today&apos;s pattern</span>
+                  </div>
+                  <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>{ex.obs}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Who it's for ─────────────────────────────────────────────────── */}
+      <section style={{ padding: '0 20px 72px' }}>
+        <div className="ls">
+          <div style={{ maxWidth: '38rem', marginBottom: '32px' }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
+              Who Steady is for
+            </div>
+            <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
+              Built for women whose brains and bodies don&apos;t stay consistent.
+            </h2>
+            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6A6F68', margin: 0 }}>
+              Steady was built by someone who lives with exactly this. It isn&apos;t based on productivity research. It&apos;s based on the real experience of trying to function with a brain that changes from morning to morning.
+            </p>
           </div>
 
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>
-            Important
+          <div className="who-grid">
+            {WHO_FOR.map((item) => (
+              <div key={item.heading} style={{ borderRadius: '22px', padding: '22px', background: 'rgba(255,255,255,0.72)', border: '1px solid rgba(229,224,232,0.9)', boxShadow: '0 6px 20px rgba(92,74,94,0.05)' }}>
+                <div style={{ fontSize: '1rem', fontWeight: 700, color: '#2B2F2A', marginBottom: '10px', lineHeight: 1.3 }}>
+                  {item.heading}
+                </div>
+                <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: '#6A6F68', margin: 0 }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
           </div>
-          <div style={{ display: 'grid', gap: '12px', fontSize: '0.9375rem', lineHeight: 1.7, color: '#6A6F68' }}>
-            <p style={{ margin: 0 }}>
-              Steady is a planning and reflection tool. It is not a medical device and does not provide medical advice, diagnosis or treatment.
+        </div>
+      </section>
+
+      {/* ── What Steady isn't ───────────────────────────────────────────── */}
+      <section style={{ padding: '0 20px 72px' }}>
+        <div className="ls">
+          <div style={{ maxWidth: '54rem', margin: '0 auto', borderRadius: '24px', padding: '28px', background: 'rgba(243,240,244,0.6)', border: '1px solid rgba(92,74,94,0.12)' }}>
+            <h3 className="font-display" style={{ fontSize: '1.5rem', color: '#2B2F2A', marginBottom: '16px' }}>
+              What Steady is not
+            </h3>
+            <div className="help-grid">
+              {[
+                ['Not a productivity app', 'Steady doesn\'t try to make you more efficient. It tries to help you understand your own patterns so you can be more realistic about what each kind of day can hold.'],
+                ['Not a habit tracker', 'There are no streaks. Missing a day doesn\'t create a debt. Your basics reset fresh each morning. Changing your plan isn\'t failure — it\'s the app working as intended.'],
+                ['Not medical advice', 'Steady is a planning and reflection tool. It helps you notice patterns. It doesn\'t diagnose, treat or replace conversations with your GP, psychiatrist or specialist.'],
+              ].map(([title, body]) => (
+                <div key={title as string} style={{ borderRadius: '16px', padding: '18px', background: 'rgba(255,255,255,0.6)', border: '1px solid rgba(229,224,232,0.8)' }}>
+                  <div style={{ fontSize: '0.9375rem', fontWeight: 700, color: '#2B2F2A', marginBottom: '8px' }}>{title}</div>
+                  <p style={{ fontSize: '0.875rem', lineHeight: 1.7, color: '#6A6F68', margin: 0 }}>{body as string}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ─────────────────────────────────────────────────────────── */}
+      <section style={{ padding: '0 20px 72px' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ borderRadius: '28px', padding: '40px 28px', background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(229,224,232,0.9)', boxShadow: '0 10px 32px rgba(92,74,94,0.08)' }}>
+            <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '14px' }}>
+              Built for the days your brain says no.
+            </h2>
+            <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 auto 24px', maxWidth: '38rem' }}>
+              Start with a quick check-in, plan around what&apos;s already real, and stop expecting a hard day to behave like an easy one. The first 100 users get free access in exchange for honest feedback.
             </p>
-            <p style={{ margin: 0 }}>
-              The insights and patterns shown in the app are designed to support self-awareness and everyday planning. They should not be used to diagnose medical conditions or replace professional healthcare advice.
-            </p>
-            <p style={{ margin: 0 }}>
-              If you have concerns about your physical or mental health, please speak to a qualified healthcare professional.
-            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
+              <Link
+                href={APP_URL}
+                style={{ padding: '14px 22px', borderRadius: '14px', background: '#5C4A5E', color: '#FFF', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
+              >
+                Get started free
+              </Link>
+              <Link
+                href="/why"
+                style={{ padding: '14px 22px', borderRadius: '14px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
+              >
+                Why this exists
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Footer ──────────────────────────────────────────────────────── */}
+      <footer style={{ padding: '0 20px 72px' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', borderRadius: '24px', padding: '24px', background: 'rgba(255,255,255,0.62)', border: '1px solid rgba(229,224,232,0.9)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '20px' }}>
+            {([['Privacy Policy', '/privacy'], ['Terms of Service', '/terms'], ['Why Steady exists', '/why']] as const).map(([label, href]) => (
+              <Link key={href} href={href} style={{ padding: '10px 14px', borderRadius: '12px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '0.875rem', fontWeight: 600 }}>
+                {label}
+              </Link>
+            ))}
+          </div>
+          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '10px' }}>Important</div>
+          <div style={{ display: 'grid', gap: '10px', fontSize: '0.875rem', lineHeight: 1.7, color: '#6A6F68' }}>
+            <p style={{ margin: 0 }}>Steady is a planning and reflection tool. It is not a medical device and does not provide medical advice, diagnosis or treatment.</p>
+            <p style={{ margin: 0 }}>The insights and patterns shown in the app are designed to support self-awareness and everyday planning. They should not be used to diagnose medical conditions or replace professional healthcare advice. If you have concerns about your health, please speak to a qualified healthcare professional.</p>
           </div>
         </div>
       </footer>
