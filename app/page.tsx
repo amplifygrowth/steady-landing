@@ -190,6 +190,7 @@ export default function LandingPage() {
                     { label: 'Non-Negotiables', items: ['Work 9–5', 'School pickup 3:30'] },
                     { label: 'Basics', items: ['Reset the kitchen ✓', 'Take medication'] },
                     { label: 'Today', items: ['Make GP appointment', 'Send clothes order back'] },
+                    { label: 'Later', items: ['Research new phone contract', 'Look into that course'] },
                   ].map(({ label, items }) => (
                     <div key={label} style={{ borderRadius: '14px', padding: '12px 14px', background: '#FAFAF7', border: '1px solid #ECE8EE', marginBottom: '8px' }}>
                       <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#5C4A5E', marginBottom: '7px' }}>{label}</div>
@@ -198,11 +199,6 @@ export default function LandingPage() {
                       ))}
                     </div>
                   ))}
-
-                  <div style={{ borderRadius: '14px', padding: '10px 14px', background: '#E4EAF0', border: '1px solid rgba(107,131,160,0.2)', marginTop: '4px' }}>
-                    <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#4A6A8A', marginBottom: '4px' }}>Later</div>
-                    <div style={{ fontSize: '0.8125rem', color: '#6A6F68' }}>Research new phone contract · Look into that course</div>
-                  </div>
                 </div>
               </div>
             </div>
