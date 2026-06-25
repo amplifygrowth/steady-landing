@@ -35,7 +35,7 @@ const FOUR_SECTIONS = [
     bg: '#EAF4EE',
     border: '#B8D9C4',
     purpose: 'Maintenance',
-    desc: 'The everyday things that keep life functioning. For many users these are exactly the tasks executive dysfunction makes hard — washing up, mopping the floor, taking medication. They reset fresh every day. Never a debt from yesterday.',
+    desc: 'The everyday things that keep life functioning. For many users these are exactly the tasks executive dysfunction makes hard: washing up, mopping the floor, taking medication. They reset fresh every day. Never a debt from yesterday.',
     items: ['Reset the kitchen', 'Take medication', 'Move your body'],
   },
   {
@@ -218,13 +218,13 @@ export default function LandingPage() {
             </h2>
             <div style={{ display: 'grid', gap: '16px' }}>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                For women living with neurodivergence, executive dysfunction, perimenopause, menopause or fluctuating capacity, this question arrives often — and rarely gets a useful answer. Standard productivity advice says plan better, be more consistent, try harder. But when your brain&apos;s ability to start and finish tasks changes from day to day, the problem isn&apos;t the plan. The system was built for a different kind of brain.
+                For women living with neurodivergence, executive dysfunction, perimenopause, menopause or fluctuating capacity, this question arrives often, and rarely gets a useful answer. Standard productivity advice says plan better, be more consistent, try harder. But when your brain&apos;s ability to start and finish tasks changes from day to day, the problem isn&apos;t the plan. The system was built for a different kind of brain.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                Executive dysfunction isn&apos;t laziness or lack of motivation. It&apos;s a real barrier between wanting to do something and being able to start it. Brain fog isn&apos;t tiredness — it&apos;s cognitive impairment that affects memory, focus and decision-making. These experiences are real, they fluctuate, and they deserve a tool that takes them seriously.
+                Executive dysfunction isn&apos;t laziness or lack of motivation. It&apos;s a real barrier between wanting to do something and being able to start it. Brain fog isn&apos;t tiredness. It&apos;s cognitive impairment that affects memory, focus and decision-making. These experiences are real, they fluctuate, and they deserve a tool that takes them seriously.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                Steady doesn&apos;t coach you to be more productive. It helps you understand what your brain can actually do at different capacity levels, based on your own data — so you can plan realistically, stop blaming yourself for hard days, and start noticing what actually helps.
+                Steady doesn&apos;t coach you to be more productive. It helps you understand what your brain can actually do at different capacity levels, based on your own data, so you can plan realistically, stop blaming yourself for hard days, and start noticing what actually helps.
               </p>
             </div>
           </div>
@@ -242,7 +242,7 @@ export default function LandingPage() {
               This isn&apos;t a task list. It&apos;s four different kinds of support.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6A6F68', margin: 0 }}>
-              Each section solves a different problem that fluctuating executive function creates. They don&apos;t blend into each other — they each do one specific thing.
+              Each section solves a different problem that fluctuating executive function creates. They don&apos;t blend into each other. They each do one specific thing.
             </p>
           </div>
 
@@ -346,7 +346,7 @@ export default function LandingPage() {
 
               <div style={{ borderTop: '1px solid #F0F1EC', paddingTop: '16px', display: 'grid', gap: '12px' }}>
                 <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>
-                  You planned a similar number of tasks regardless of battery level — around 3 each day. On Low Battery days, you completed 48% of them. On Momentum days, 87%. The difference isn&apos;t the plan. It&apos;s the capacity.
+                  You planned a similar number of tasks regardless of battery level, around 3 each day. On Low Battery days, you completed 48% of them. On Momentum days, 87%. The difference isn&apos;t the plan. It&apos;s the capacity.
                 </p>
                 <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>
                   Basics stayed more consistent across capacity levels than planned tasks did.
@@ -363,7 +363,7 @@ export default function LandingPage() {
                 {[
                   'Brain fog appears more often after disturbed sleep or fewer than 5 hours.',
                   'Low Battery mornings recover to Steady by end of day around 40% of the time.',
-                  'You started Steady but finished Low Battery on 4 of the last 7 days — usually after 2pm.',
+                  'You started Steady but finished Low Battery on 4 of the last 7 days, usually after 2pm.',
                 ].map((obs, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                     <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#5C4A5E', flexShrink: 0, marginTop: '6px' }} />
@@ -454,7 +454,7 @@ export default function LandingPage() {
             <div className="help-grid">
               {[
                 ['Not a productivity app', 'Steady doesn\'t try to make you more efficient. It tries to help you understand your own patterns so you can be more realistic about what each kind of day can hold.'],
-                ['Not a habit tracker', 'There are no streaks. Missing a day doesn\'t create a debt. Your basics reset fresh each morning. Changing your plan isn\'t failure — it\'s the app working as intended.'],
+                ['Not a habit tracker', 'There are no streaks. Missing a day doesn\'t create a debt. Your basics reset fresh each morning. Changing your plan isn\'t failure. It\'s the app working as intended.'],
                 ['Not medical advice', 'Steady is a planning and reflection tool. It helps you notice patterns. It doesn\'t diagnose, treat or replace conversations with your GP, psychiatrist or specialist.'],
               ].map(([title, body]) => (
                 <div key={title as string} style={{ borderRadius: '16px', padding: '18px', background: 'rgba(255,255,255,0.6)', border: '1px solid rgba(229,224,232,0.8)' }}>

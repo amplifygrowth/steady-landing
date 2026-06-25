@@ -19,7 +19,7 @@ const steps = [
     id: 3,
     label: 'Midday check-in',
     heading: 'An optional nudge around midday.',
-    copy: "Around midday, Steady sends an optional check-in to see how you're getting on. If your battery has shifted since morning, you can update it here. Your plan adjusts around whatever is real now. You don't have to respond — it's just there if things have changed.",
+    copy: "Around midday, Steady sends an optional check-in to see how you're getting on. If your battery has shifted since morning, you can update it here. Your plan adjusts around whatever is real now. You don't have to respond. It's just there if things have changed.",
   },
   {
     id: 4,
