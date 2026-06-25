@@ -54,10 +54,10 @@ export default function StartPage() {
         <section style={{ paddingBottom: '48px' }}>
           <div style={{ borderRadius: '20px', padding: '24px', background: 'rgba(243,240,244,0.7)', border: '1px solid rgba(92,74,94,0.1)' }}>
             <p className="font-display" style={{ fontSize: '1.25rem', lineHeight: 1.4, color: '#2B2F2A', margin: '0 0 12px' }}>
-              You know what you need to do. But some days the gap between knowing and starting feels impossible to cross.
+              You know what you need to do. But the gap between knowing and starting? That&apos;s executive dysfunction, and it&apos;s real.
             </p>
             <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: '#6A6F68', margin: 0 }}>
-              Steady doesn&apos;t try to close that gap by telling you to try harder. It plans around what&apos;s real, tracks what actually affects your capacity, and over time helps you understand why some days are harder than they should be.
+              Steady doesn&apos;t try to close that gap by telling you to try harder. It plans around what&apos;s real, tracks what actually affects your capacity, and over time shows you why some days are harder than they should be. The longer you use it, the clearer the picture gets.
             </p>
           </div>
         </section>
