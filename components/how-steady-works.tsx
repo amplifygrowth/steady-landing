@@ -17,9 +17,9 @@ const steps = [
   },
   {
     id: 3,
-    label: 'Reality changes',
-    heading: 'Adjust when the day changes.',
-    copy: "Brain fog arrives. Energy drops. Capacity shifts. Changing your battery mid-day isn't failure. It's the app adapting to what's real. Your plan updates around the new capacity.",
+    label: 'Midday check-in',
+    heading: 'An optional nudge around midday.',
+    copy: "Around midday, Steady sends an optional check-in to see how you're getting on. If your battery has shifted since morning, you can update it here. Your plan adjusts around whatever is real now. You don't have to respond — it's just there if things have changed.",
   },
   {
     id: 4,
@@ -124,8 +124,8 @@ function StepScreen({ step }: { step: number }) {
     return (
       <div style={shellStyle}>
         <div style={{ padding: '18px 18px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontSize: '0.75rem', color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Reality changes</div>
-          <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>2:15pm</div>
+          <div style={{ fontSize: '0.75rem', color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Midday check-in</div>
+          <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>12:30pm</div>
         </div>
         <div style={{ padding: '18px' }}>
           <div style={{ ...surfaceStyle, padding: '16px', marginBottom: '12px' }}>
