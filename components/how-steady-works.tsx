@@ -13,13 +13,13 @@ const steps = [
     id: 2,
     label: 'Plan the day',
     heading: 'Four sections. Four different kinds of support.',
-    copy: 'Non-Negotiables are memory support — fixed commitments that need reminding. Basics are your maintenance tasks, which reset fresh each day. Today holds up to three things you want to attempt — the cap exists because executive dysfunction makes a long open list harder to start from. Later captures everything else your brain offers without turning it into today\'s pressure.',
+    copy: 'Non-Negotiables are memory support: fixed commitments that need reminding. Basics are your maintenance tasks, which reset fresh each day. Today holds up to three things you want to attempt. The cap exists because executive dysfunction makes a long open list harder to start from. Later captures everything else your brain offers without turning it into today\'s pressure.',
   },
   {
     id: 3,
     label: 'Reality changes',
     heading: 'Adjust when the day changes.',
-    copy: "Brain fog arrives. Energy drops. Capacity shifts. Changing your battery mid-day isn't failure — it's the app adapting to what's real. Your plan updates around the new capacity.",
+    copy: "Brain fog arrives. Energy drops. Capacity shifts. Changing your battery mid-day isn't failure. It's the app adapting to what's real. Your plan updates around the new capacity.",
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ const steps = [
     id: 5,
     label: 'Daily Reflection',
     heading: 'One honest observation, based on your data.',
-    copy: 'After your evening close, Steady looks at what actually happened and offers a single sentence grounded in your history. Not encouragement. Not a score. Just a real observation — like "You completed more tasks than usual for a Low Battery day" or "Your basics held steady even when everything else fell away."',
+    copy: 'After your evening close, Steady looks at what actually happened and offers a single sentence grounded in your history. Not encouragement. Not a score. Just a real observation, like "You completed more tasks than usual for a Low Battery day" or "Your basics held steady even when everything else fell away."',
   },
   {
     id: 6,

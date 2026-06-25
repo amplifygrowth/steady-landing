@@ -26,7 +26,7 @@ const FOUR_SECTIONS = [
     bg: '#F3F0F4',
     border: '#D8D2D9',
     purpose: 'Memory support',
-    desc: 'Work, appointments, school run. Fixed commitments that need to happen. They appear as reminders, not tasks — because brain fog, ADHD and menopause can make even important things easy to lose track of.',
+    desc: 'Work, appointments, school run. Fixed commitments that need to happen. They appear as reminders, not tasks, because brain fog, neurodivergent thinking and menopause can make even important things easy to lose track of.',
     items: ['Work 9–5', 'GP appointment 2pm', 'School pickup 3:30pm'],
   },
   {
@@ -53,15 +53,15 @@ const FOUR_SECTIONS = [
     bg: '#E4EAF0',
     border: '#B8C8D9',
     purpose: 'Capture',
-    desc: 'Every idea your brain offers while you\'re already busy with something else. Parked and safe — not forgotten, not today\'s pressure. ADHD brains generate ideas constantly. Later gives them somewhere to land without becoming overwhelm.',
+    desc: 'Every idea your brain offers while you\'re already busy with something else. Parked and safe, not forgotten, not today\'s pressure. Neurodivergent brains generate ideas constantly. Later gives them somewhere to land without becoming overwhelm.',
     items: ['Research new phone contract', 'Look into that course', 'Check holiday dates'],
   },
 ]
 
 const WHO_FOR = [
   {
-    heading: 'ADHD — diagnosed, suspected or self-identified',
-    body: 'Executive dysfunction means the gap between wanting to do something and actually starting it can feel impossible. Steady works with that reality, not against it. The three-task cap, the Later capture space and the Focus Patterns section are all built with ADHD in mind.',
+    heading: 'Neurodivergent: ADHD, autism, dyspraxia and more',
+    body: 'Executive dysfunction means the gap between wanting to do something and actually starting it can feel impossible. Steady works with that reality, not against it. The three-task cap, the Later capture space and the Patterns section are built around how neurodivergent brains actually work.',
   },
   {
     heading: 'Perimenopause and menopause',
@@ -69,7 +69,7 @@ const WHO_FOR = [
   },
   {
     heading: 'Fluctuating executive function',
-    body: 'You don\'t need a diagnosis for Steady to help. If your ability to start tasks, hold focus or manage your day varies from one morning to the next — for any reason — Steady is built for exactly that experience.',
+    body: 'You don\'t need a diagnosis for Steady to help. If your ability to start tasks, hold focus or manage your day varies from one morning to the next, for any reason, Steady is built for exactly that experience.',
   },
   {
     heading: 'Anyone who\'s felt failed by productivity systems',
@@ -142,7 +142,7 @@ export default function LandingPage() {
                   Most planning apps assume your brain shows up the same way every morning. Steady doesn&apos;t. It starts with how you actually are, helps you plan around what&apos;s real, and over time shows you why some days are harder than they should be.
                 </p>
                 <p style={{ fontSize: '0.9375rem', lineHeight: 1.8, color: '#6A6F68', margin: '0 0 24px', maxWidth: '38rem' }}>
-                  Whether that&apos;s ADHD, perimenopause, menopause, brain fog, executive dysfunction, poor sleep or the weight of a full life — Steady works with your brain instead of expecting it to perform.
+                  Whether that&apos;s neurodivergence, perimenopause, menopause, brain fog, executive dysfunction, poor sleep or the weight of a full life, Steady works with your brain instead of expecting it to perform.
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
@@ -222,7 +222,7 @@ export default function LandingPage() {
             </h2>
             <div style={{ display: 'grid', gap: '16px' }}>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                For women living with ADHD, executive dysfunction, perimenopause, menopause or fluctuating capacity, this question arrives often — and rarely gets a useful answer. Standard productivity advice says plan better, be more consistent, try harder. But when your brain&apos;s ability to start and finish tasks changes from day to day, the problem isn&apos;t the plan. The system was built for a different kind of brain.
+                For women living with neurodivergence, executive dysfunction, perimenopause, menopause or fluctuating capacity, this question arrives often — and rarely gets a useful answer. Standard productivity advice says plan better, be more consistent, try harder. But when your brain&apos;s ability to start and finish tasks changes from day to day, the problem isn&apos;t the plan. The system was built for a different kind of brain.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
                 Executive dysfunction isn&apos;t laziness or lack of motivation. It&apos;s a real barrier between wanting to do something and being able to start it. Brain fog isn&apos;t tiredness — it&apos;s cognitive impairment that affects memory, focus and decision-making. These experiences are real, they fluctuate, and they deserve a tool that takes them seriously.
