@@ -64,21 +64,26 @@ function StepScreen({ step }: { step: number }) {
           <div style={{ fontSize: '0.75rem', color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Morning check-in</div>
           <div style={{ fontSize: '0.75rem', color: '#9A9E96' }}>7:32am</div>
         </div>
-        <div style={{ padding: '18px' }}>
-          <div style={{ ...surfaceStyle, padding: '16px' }}>
-            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '10px' }}>How are you arriving today?</div>
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
-              {([['Momentum', false], ['Steady', true], ['Low Battery', false]] as const).map(([label, active]) => (
-                <div key={label} style={{ flex: 1, padding: '10px 6px', borderRadius: '12px', textAlign: 'center', fontSize: '0.8125rem', fontWeight: active ? 600 : 500, background: active ? '#F3F0F4' : '#FAFAF7', border: `1.5px solid ${active ? '#5C4A5E' : '#E3E4DE'}`, color: active ? '#5C4A5E' : '#6E726B' }}>
-                  {label}
+        <div style={{ padding: '18px', display: 'grid', gap: '10px' }}>
+          <div style={{ ...surfaceStyle, padding: '14px 16px' }}>
+            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '12px' }}>How are you arriving today?</div>
+            {([['Energy', 2], ['Focus', 2], ['Mood', 3], ['Sleep', 2]] as const).map(([label, fill]) => (
+              <div key={label} style={{ marginBottom: '10px' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#6A6E66', marginBottom: '5px' }}>{label}</div>
+                <div style={{ display: 'flex', gap: '4px' }}>
+                  {[1,2,3,4,5].map(i => (
+                    <div key={i} style={{ flex: 1, height: '6px', borderRadius: '3px', background: i <= fill ? '#5C4A5E' : '#E3E4DE' }} />
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>What&apos;s influencing your battery?</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              </div>
+            ))}
+          </div>
+          <div style={{ ...surfaceStyle, padding: '12px 14px' }}>
+            <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>What&apos;s influencing your battery?</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
               {['Poor sleep', 'Woke multiple times', 'Brain fog'].map(item => (
-                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 12px', borderRadius: '10px', background: '#F3F0F4', border: '1px solid #D8D2D9', color: '#5C4A5E', fontSize: '0.875rem' }}>
-                  <span style={{ fontWeight: 700, fontSize: '0.75rem' }}>✓</span> {item}
+                <div key={item} style={{ padding: '5px 10px', borderRadius: '9999px', background: '#F3F0F4', border: '1px solid #D8D2D9', color: '#5C4A5E', fontSize: '0.8125rem' }}>
+                  ✓ {item}
                 </div>
               ))}
             </div>
