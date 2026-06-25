@@ -13,7 +13,7 @@ const steps = [
     id: 2,
     label: 'Plan the day',
     heading: 'Four sections. Four different kinds of support.',
-    copy: 'Non-Negotiables are memory support: fixed commitments that need reminding. Basics are your maintenance tasks, which reset fresh each day. Today holds up to three things you want to attempt. The cap exists because executive dysfunction makes a long open list harder to start from. Later captures everything else your brain offers without turning it into today\'s pressure.',
+    copy: 'Non-Negotiables are memory support: fixed commitments that need reminding. Basics are your maintenance tasks, which reset fresh each day. Today holds up to three things you want to attempt. The cap exists because executive dysfunction makes a long open list harder to start from. Later is for tasks that arrive while you\'re mid-something else, so you can park them without switching.',
   },
   {
     id: 3,

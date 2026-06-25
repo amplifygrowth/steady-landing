@@ -52,9 +52,9 @@ const FOUR_SECTIONS = [
     accent: '#4A6A8A',
     bg: '#E4EAF0',
     border: '#B8C8D9',
-    purpose: 'Capture',
-    desc: 'Every idea your brain offers while you\'re already busy with something else. Parked and safe, not forgotten, not today\'s pressure. Neurodivergent brains generate ideas constantly. Later gives them somewhere to land without becoming overwhelm.',
-    items: ['Research new phone contract', 'Look into that course', 'Check holiday dates'],
+    purpose: 'Task parking',
+    desc: 'For the tasks that arrive while you\'re supposed to be doing something else. You need to write a report but your brain has decided the kitchen cupboards need rearranging right now. Park it here instead of switching. Out of your head, not lost, not today\'s pressure.',
+    items: ['Sort the kitchen cupboards', 'Research new phone contract', 'Check holiday dates'],
   },
 ]
 
