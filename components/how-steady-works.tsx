@@ -7,7 +7,7 @@ const steps = [
     id: 1,
     label: 'Morning check-in',
     heading: "Start with the day you've actually got.",
-    copy: 'Rate your energy, focus and mood. Based on how you arrive, Steady works out what kind of day you\'re starting: Momentum, Steady or Low Battery. Add anything already affecting you, like poor sleep, brain fog or a hard morning. Honest beats optimistic.',
+    copy: 'Rate your energy, focus and mood. Based on how you arrive, Steady works out what kind of day you\'re starting: Momentum, Steady or Low Battery. Add anything already affecting you, like poor sleep or brain fog. Honest beats optimistic.',
   },
   {
     id: 2,
