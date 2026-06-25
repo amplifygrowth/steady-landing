@@ -71,6 +71,13 @@ export default function RootLayout({
             src="https://www.facebook.com/tr?id=1707880166796257&ev=PageView&noscript=1"
           />
         </noscript>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-S6DYTL98ES" strategy="afterInteractive" />
+        <Script id="ga4" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-S6DYTL98ES');
+        `}</Script>
         <Script id="gtm" strategy="afterInteractive">{`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
