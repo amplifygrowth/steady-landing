@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import AppDemo from '@/components/app-demo'
 
 const APP_URL = process.env.NEXT_PUBLIC_STEADY_APP_URL || 'http://localhost:3000'
 
@@ -60,6 +61,14 @@ export default function StartPage() {
               Steady doesn&apos;t try to close that gap by telling you to try harder. It plans around what&apos;s real, tracks what actually affects your capacity, and over time shows you why some days are harder than they should be. The longer you use it, the clearer the picture gets.
             </p>
           </div>
+        </section>
+
+        {/* See it in action */}
+        <section style={{ paddingBottom: '48px' }}>
+          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '20px' }}>
+            See it in action
+          </div>
+          <AppDemo />
         </section>
 
         {/* Four sections */}

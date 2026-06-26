@@ -13,7 +13,7 @@ export type LegalDocument = {
 
 export const privacyPolicy: LegalDocument = {
   title: 'Privacy Policy',
-  lastUpdated: '18 June 2026',
+  lastUpdated: 'June 2026',
   intro: [
     'This policy explains how Capable Mind collects, uses, and protects your personal data when you use Steady.',
   ],
@@ -23,29 +23,28 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         'Steady is provided by Capable Mind, operating as a sole trader business based in the United Kingdom.',
         'Data controller: Rebecca Allinson, trading as Capable Mind.',
-        'Contact: support@capablemind.app.',
-        'If you have any questions about this policy or how your data is handled, please contact us at the email address above.',
+        'ICO registration number: [ICO REGISTRATION NUMBER]',
+        'Contact: support@capablemind.app',
       ],
     },
     {
-      title: '2. Where we are in our compliance journey',
+      title: '2. Our commitment to your data',
       paragraphs: [
-        'We want to be transparent with you. Steady is currently in an early testing phase with a small number of users before a wider public launch. We take data protection seriously and have built this policy to reflect exactly what we collect and why.',
-        'We have not yet completed registration with the Information Commissioner\'s Office (ICO), the UK\'s data protection regulator. We intend to complete this registration before Steady is made available more widely. This does not affect your rights under UK GDPR, which apply regardless of our registration status, and we are committed to meeting our obligations under that law throughout this testing period and beyond.',
+        'Steady is a new product and we are committed to transparency about how your data is handled as it grows. We take data protection seriously and have built this policy to reflect exactly what we collect and why.',
+        'We are registered with the Information Commissioner\'s Office (ICO), the UK\'s data protection regulator, as a data controller.',
       ],
     },
     {
       title: '3. What data we collect',
       paragraphs: [
-        'We collect the following categories of personal data:',
-        'We only collect what is needed to provide the features you use. We do not ask for or store more health information than is necessary for the app\'s planning and pattern-noticing features to work.',
+        'We only collect what is needed to provide the features you use. We do not ask for or store more information than is necessary for the app\'s planning and pattern-noticing features to work.',
       ],
       bullets: [
         'Account information: your email address, and optionally your name.',
-        'Health-related information (special category data): this includes whether you have ADHD, your menopause or perimenopause and HRT status, your menstrual cycle status if relevant, and the symptoms, capacity levels, and sleep ratings you log each day.',
+        'Health-related information (special category data): this includes whether you have ADHD or autism, your menopause or perimenopause and HRT status, your menstrual cycle status if relevant, and the symptoms, capacity levels, and sleep ratings you log each day.',
         'Daily usage data: the tasks, notes, and reflections you create within the app, including items in Today, Basics, Non-Negotiables, Later, Ideas, and the Worry jar.',
         'Device and notification data: a push notification subscription identifier, if you enable notifications, so we can send you reminders you have asked for.',
-        'Technical data: basic information about how you use the app, to help us understand and fix problems.',
+        'Technical data: limited, non-identifiable information about how you use the app, to help us understand and improve it. No health-related data, task content, or free-text entries are ever included in this data.',
       ],
     },
     {
@@ -54,12 +53,13 @@ export const privacyPolicy: LegalDocument = {
         'For your account information, we process this data under Article 6(1)(b) UK GDPR because it is necessary to provide you with the app and the service you have signed up for.',
         'For health-related information, this is special category data under Article 9 UK GDPR. We process this data on the basis of your explicit consent under Article 9(2)(a). You are asked to give this consent clearly and separately during onboarding before health-related data is collected.',
         'You may withdraw this consent at any time through the app\'s settings or by contacting us. If you withdraw consent, we will stop processing new health-related data going forward. Because Steady\'s core features depend on this data, withdrawing consent will mean the app can no longer provide these personalised features, though your account and any non-health data may remain usable where practical.',
+        'For product analytics, we process limited, non-identifiable usage data on the basis of our legitimate interests in understanding how the app is used and improving it. No health-related data, task content, or free-text entries are ever included in analytics data.',
         'We use your data to:',
       ],
       bullets: [
         'Provide the daily planning features you use, including your capacity check-in, task lists, and reminders.',
         'Show you patterns in your own data over time, such as the symptom and sleep trends visible in the Patterns screen.',
-        'Send you the notifications you have specifically asked for, including morning and evening nudges and any task reminders you set.',
+        'Send you the notifications you have specifically asked for, including morning, midday, and evening nudges.',
         'Maintain and improve the app, and fix problems when they occur.',
       ],
     },
@@ -73,18 +73,23 @@ export const privacyPolicy: LegalDocument = {
     {
       title: '6. Who we share your data with',
       paragraphs: [
-        'We use a small number of trusted service providers to run Steady. These providers only process your data to help us deliver the app, under contractual obligations to protect it:',
+        'We use a small number of trusted service providers to run Steady. These providers only process your data to help us deliver the app, under contractual obligations to protect it.',
         'We do not sell your personal data to any third party. We do not share your health-related data with advertisers.',
       ],
       bullets: [
-        'Supabase — our database, authentication, and backend infrastructure provider, which stores your account and app data securely and supports sign-in.',
-        'Web push providers through your browser — used only if you enable notifications, so reminders can be delivered to your device.',
+        'Supabase: our database, authentication, and backend infrastructure provider, which stores your account and app data securely and handles sign-in.',
+        'Resend: transactional email delivery, used to send you the one-time sign-in code when you log in to Steady.',
+        'Klaviyo: email communications platform, used to send you updates and information about Steady if you have opted in to marketing emails.',
+        'PostHog: product analytics, hosted within the European Union. PostHog helps us understand how the app is used so we can improve it. No health-related data, task content, or free-text entries are ever sent to PostHog.',
+        'Zoho: email hosting for our support and contact addresses at hello@capablemind.app and support@capablemind.app.',
+        'Web push providers through your browser: used only if you enable notifications, so reminders can be delivered to your device.',
       ],
     },
     {
       title: '7. Where your data is stored',
       paragraphs: [
         'Our service providers may store data in the UK, the European Economic Area, or other locations with appropriate data protection safeguards in place, such as Standard Contractual Clauses, where data is transferred outside the UK or EEA.',
+        'PostHog analytics data is hosted within the European Union.',
       ],
     },
     {
@@ -126,7 +131,7 @@ export const privacyPolicy: LegalDocument = {
     {
       title: '12. Changes to this policy',
       paragraphs: [
-        'We may update this policy from time to time, particularly as Steady moves from testing into wider availability and as we complete our ICO registration. We will let you know of any significant changes through the app or by email.',
+        'We may update this policy from time to time as Steady develops. We will let you know of any significant changes through the app or by email.',
       ],
     },
     {
