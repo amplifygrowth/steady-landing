@@ -109,12 +109,18 @@ export default function StartPage() {
 
       {/* Footer */}
       <footer style={{ padding: '0 24px 48px' }}>
-        <div style={{ maxWidth: '36rem', margin: '0 auto', display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {([['Privacy', '/privacy'], ['Terms', '/terms'], ['Why Steady exists', '/why'], ['Full site', '/']] as const).map(([label, href]) => (
-            <Link key={href} href={href} style={{ fontSize: '0.8125rem', color: '#9A9E96', textDecoration: 'none' }}>
-              {label}
-            </Link>
-          ))}
+        <div style={{ maxWidth: '36rem', margin: '0 auto' }}>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '10px' }}>
+            {([['Privacy', '/privacy'], ['Terms', '/terms'], ['Cookies', '/cookies'], ['Refunds', '/refunds'], ['Why Steady exists', '/why'], ['Full site', '/']] as const).map(([label, href]) => (
+              <Link key={href} href={href} style={{ fontSize: '0.8125rem', color: '#9A9E96', textDecoration: 'none' }}>
+                {label}
+              </Link>
+            ))}
+          </div>
+          <p style={{ fontSize: '0.8125rem', color: '#9A9E96', textAlign: 'center', margin: 0 }}>
+            Questions?{' '}
+            <a href="mailto:hello@capablemind.app" style={{ color: '#9A9E96', textDecoration: 'underline' }}>hello@capablemind.app</a>
+          </p>
         </div>
       </footer>
 

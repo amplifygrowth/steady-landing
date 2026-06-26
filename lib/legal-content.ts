@@ -138,6 +138,89 @@ export const privacyPolicy: LegalDocument = {
   ],
 }
 
+export const refundPolicy: LegalDocument = {
+  title: 'Refund Policy',
+  lastUpdated: 'June 2026',
+  intro: [],
+  sections: [
+    {
+      title: 'Founding Year membership',
+      paragraphs: [
+        'Steady is currently available as a Founding Year membership at £29, giving you full access to the app for 12 months from the date you join.',
+      ],
+    },
+    {
+      title: 'Our refund policy',
+      paragraphs: [
+        'We offer a 14-day refund period from the date of purchase. If Steady is not right for you, contact us within 14 days at hello@capablemind.app and we will issue a full refund, no questions asked.',
+        'After 14 days, we are unable to offer refunds on the Founding Year membership.',
+      ],
+    },
+    {
+      title: 'How to request a refund',
+      paragraphs: [
+        'Email hello@capablemind.app with the subject line "Refund request" and include the email address you used to sign up. We aim to respond within 2 working days and process all approved refunds within 5 to 10 working days.',
+      ],
+    },
+    {
+      title: 'Your statutory rights',
+      paragraphs: [
+        'Nothing in this policy affects your statutory rights under UK consumer law. Under the Consumer Contracts Regulations 2013, you have the right to cancel a digital service within 14 days of purchase unless you have already started using it and agreed to waive this right at the point of purchase.',
+      ],
+    },
+    {
+      title: 'Questions',
+      paragraphs: [
+        'If you have any questions about refunds, contact us at hello@capablemind.app.',
+      ],
+    },
+  ],
+}
+
+export const cookiePolicy: LegalDocument = {
+  title: 'Cookie Policy',
+  lastUpdated: 'June 2026',
+  intro: [],
+  sections: [
+    {
+      title: 'What are cookies?',
+      paragraphs: [
+        'Cookies are small text files stored on your device when you visit a website. They help websites remember your preferences and understand how people use them.',
+      ],
+    },
+    {
+      title: 'What cookies does Steady use?',
+      paragraphs: [
+        'We use a small number of cookies to understand how people find and use the Steady website, so we can keep improving it.',
+        'Specifically we use:',
+        'Google Analytics, via Google Tag Manager, to understand how visitors find our site and which pages they visit. This helps us improve the landing page and make Steady easier to find for the people who need it. Google Analytics sets cookies that collect anonymous information about your visit.',
+        'We do not use cookies for advertising targeting until you have given consent via our cookie banner.',
+      ],
+    },
+    {
+      title: 'What we do not do',
+      bullets: [
+        'We do not sell your data to third parties.',
+        'We do not use cookies to build advertising profiles without your consent.',
+        'We do not use cookies inside the Steady app itself.',
+      ],
+    },
+    {
+      title: 'Your choices',
+      paragraphs: [
+        'When you first visit capablemind.app you will see a cookie banner. You can accept or decline non-essential cookies. If you decline, only essential cookies required for the site to function will be used and no analytics data will be collected.',
+        'You can change your mind at any time by clearing your browser cookies and revisiting the site, where the banner will appear again.',
+      ],
+    },
+    {
+      title: 'Contact',
+      paragraphs: [
+        'If you have questions about how we use cookies, contact us at hello@capablemind.app.',
+      ],
+    },
+  ],
+}
+
 export const termsOfService: LegalDocument = {
   title: 'Terms of Service',
   lastUpdated: '18 June 2026',

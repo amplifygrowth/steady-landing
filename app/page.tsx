@@ -498,8 +498,12 @@ export default function LandingPage() {
       {/* ── Footer ──────────────────────────────────────────────────────── */}
       <footer style={{ padding: '0 20px 72px' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', borderRadius: '24px', padding: '24px', background: 'rgba(255,255,255,0.62)', border: '1px solid rgba(229,224,232,0.9)' }}>
+          <p style={{ fontSize: '0.875rem', lineHeight: 1.7, color: '#6A6F68', margin: '0 0 16px' }}>
+            Need help or have a question?{' '}
+            <a href="mailto:hello@capablemind.app" style={{ color: '#5C4A5E', fontWeight: 600, textDecoration: 'none' }}>hello@capablemind.app</a>
+          </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '20px' }}>
-            {([['Privacy Policy', '/privacy'], ['Terms of Service', '/terms'], ['Why Steady exists', '/why']] as const).map(([label, href]) => (
+            {([['Privacy Policy', '/privacy'], ['Terms of Service', '/terms'], ['Cookie Policy', '/cookies'], ['Refund Policy', '/refunds'], ['Why Steady exists', '/why']] as const).map(([label, href]) => (
               <Link key={href} href={href} style={{ padding: '10px 14px', borderRadius: '12px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '0.875rem', fontWeight: 600 }}>
                 {label}
               </Link>
