@@ -774,10 +774,9 @@ function resetScreen1() {
 function animScreen1() {
   resetScreen1()
   var s1 = document.getElementById('screen1')
-  animAfter(600,  function() { smoothScrollTo(s1, 190, 900) })  // show basics
-  animAfter(1800, function() { smoothScrollTo(s1, 370, 900) })  // show today tasks + later
-  animAfter(3000, function() { smoothScrollTo(s1, 280, 600) })  // scroll back to tasks
-  animAfter(3800, function() {
+  // One gentle scroll to hint the screen is scrollable and bring tasks into view
+  animAfter(800, function() { smoothScrollTo(s1, 300, 1200) })
+  animAfter(2400, function() {
     var circle = document.getElementById('task2-circle')
     circle.classList.add('done')
     circle.textContent = '✓'
@@ -785,9 +784,9 @@ function animScreen1() {
     document.getElementById('tasks-count').textContent = '2 of 4 done'
     document.getElementById('win-toast').classList.add('visible')
   })
-  animAfter(5000, function() { document.getElementById('win-toast').classList.remove('visible') })
-  animAfter(5400, function() { document.getElementById('slot-freed').classList.add('visible') })
-  animAfter(7200, function() { document.getElementById('slot-freed').classList.remove('visible') })
+  animAfter(3600, function() { document.getElementById('win-toast').classList.remove('visible') })
+  animAfter(4000, function() { document.getElementById('slot-freed').classList.add('visible') })
+  animAfter(7500, function() { document.getElementById('slot-freed').classList.remove('visible') })
 }
 
 function resetScreen2() {
