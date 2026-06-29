@@ -103,8 +103,11 @@ const DEMO_HTML = `<!DOCTYPE html>
   .screen {
     position: absolute;
     inset: 0;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
     opacity: 0;
     transition: opacity 0.8s ease;
     padding-bottom: 16px;
