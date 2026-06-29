@@ -23,7 +23,7 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         'Steady is provided by Capable Mind, operating as a sole trader business based in the United Kingdom.',
         'Data controller: Rebecca Allinson, trading as Capable Mind.',
-        'ICO registration number: [ICO REGISTRATION NUMBER]',
+        'ICO registration number: ZC183559',
         'Contact: support@capablemind.app',
       ],
     },
@@ -78,6 +78,7 @@ export const privacyPolicy: LegalDocument = {
       ],
       bullets: [
         'Supabase: our database, authentication, and backend infrastructure provider, which stores your account and app data securely and handles sign-in.',
+        'Anthropic: AI processing provider. When you use the task simplification feature, the text of your task is sent to Anthropic to generate suggestions. Task text may contain personal information. No health-related data from your check-ins or profile is sent to Anthropic.',
         'Resend: transactional email delivery, used to send you the one-time sign-in code when you log in to Steady.',
         'Klaviyo: email communications platform, used to send you updates and information about Steady if you have opted in to marketing emails.',
         'PostHog: product analytics, hosted within the European Union. PostHog helps us understand how the app is used so we can improve it. No health-related data, task content, or free-text entries are ever sent to PostHog.',
