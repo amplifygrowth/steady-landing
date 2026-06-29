@@ -97,7 +97,7 @@ const DEMO_HTML = `<!DOCTYPE html>
   .screen-container {
     position: absolute;
     top: 44px; left: 0; right: 0; bottom: 72px;
-    overflow: hidden;
+    overflow: clip;
   }
 
   .screen {
@@ -550,7 +550,7 @@ const DEMO_HTML = `<!DOCTYPE html>
               <div class="heatmap-day-label">Fr</div><div class="heatmap-day-label">Sa</div>
               <div class="heatmap-day-label">Su</div>
             </div>
-            <div id="heatmap-container"></div>
+            <div id="heatmap-container" style="min-height:180px"></div>
             <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
               <div style="display:flex;align-items:center;gap:5px">
                 <div style="width:10px;height:10px;border-radius:3px;background:#4A7B5C;flex-shrink:0"></div>
@@ -643,7 +643,7 @@ const DEMO_HTML = `<!DOCTYPE html>
             </p>
           </div>
 
-          <div style="height:16px"></div>
+          <div style="height:120px"></div>
         </div>
 
       </div>
