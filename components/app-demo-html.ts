@@ -736,12 +736,15 @@ function resetScreen1() {
   document.getElementById('slot-freed').classList.remove('visible')
   document.getElementById('win-toast').classList.remove('visible')
   document.getElementById('tasks-count').textContent = '1 of 4 done'
-  document.getElementById('screen1').scrollTop = 290
+  document.getElementById('screen1').scrollTop = 0
 }
 
 function animScreen1() {
   resetScreen1()
-  animAfter(1800, function() {
+  animAfter(900, function() {
+    document.getElementById('screen1').scrollTo({ top: 290, behavior: 'smooth' })
+  })
+  animAfter(2200, function() {
     var circle = document.getElementById('task2-circle')
     circle.classList.add('done')
     circle.textContent = '✓'
@@ -749,9 +752,9 @@ function animScreen1() {
     document.getElementById('tasks-count').textContent = '2 of 4 done'
     document.getElementById('win-toast').classList.add('visible')
   })
-  animAfter(3000, function() { document.getElementById('win-toast').classList.remove('visible') })
-  animAfter(3400, function() { document.getElementById('slot-freed').classList.add('visible') })
-  animAfter(5600, function() { document.getElementById('slot-freed').classList.remove('visible') })
+  animAfter(3400, function() { document.getElementById('win-toast').classList.remove('visible') })
+  animAfter(3800, function() { document.getElementById('slot-freed').classList.add('visible') })
+  animAfter(6200, function() { document.getElementById('slot-freed').classList.remove('visible') })
 }
 
 function resetScreen2() {
