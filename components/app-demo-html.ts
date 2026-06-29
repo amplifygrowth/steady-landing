@@ -530,6 +530,8 @@ const DEMO_HTML = `<!DOCTYPE html>
             </div>
           </div>
 
+          <div style="height:120px"></div>
+
           <div class="win-toast" id="win-toast">
             <div class="win-toast-inner">Off the list, out of your head.</div>
           </div>
@@ -771,7 +773,7 @@ function resetScreen1() {
   document.getElementById('slot-freed').classList.remove('visible')
   document.getElementById('win-toast').classList.remove('visible')
   document.getElementById('tasks-count').textContent = '1 of 4 done'
-  document.getElementById('screen1').scrollTop = 260
+  document.getElementById('screen1').scrollTop = 0
 }
 
 function animScreen1() {
