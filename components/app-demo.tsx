@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import DEMO_HTML from './app-demo-html'
 
 const IFRAME_W = 422
 const IFRAME_H = 950
@@ -34,10 +33,9 @@ export default function AppDemo() {
     >
       <iframe
         ref={iframeRef}
-        srcDoc={DEMO_HTML}
+        src="/demo-frame"
         title="See Steady in action"
         scrolling="no"
-        sandbox="allow-scripts"
         style={{ border: 'none', display: 'block' }}
       />
     </div>
