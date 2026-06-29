@@ -860,6 +860,23 @@ function prevScreen() { goToScreen((currentScreen + 2) % 3) }
 
 buildHeatmap()
 goToScreen(0)
+
+// JS touch scroll — CSS overflow scroll is unreliable in sandboxed iframes on iOS
+;(function() {
+  function makeScrollable(el) {
+    var startY = 0, startTop = 0
+    el.addEventListener('touchstart', function(e) {
+      startY   = e.touches[0].clientY
+      startTop = el.scrollTop
+    }, {passive: true})
+    el.addEventListener('touchmove', function(e) {
+      el.scrollTop = startTop - (e.touches[0].clientY - startY)
+      e.preventDefault()
+    }, {passive: false})
+  }
+  makeScrollable(document.getElementById('screen1'))
+  makeScrollable(document.getElementById('screen2'))
+})()
 </script>
 </body>
 </html>`
