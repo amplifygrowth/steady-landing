@@ -103,18 +103,19 @@ const DEMO_HTML = `<!DOCTYPE html>
   .screen {
     position: absolute;
     inset: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
     overscroll-behavior: contain;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.8s ease;
     padding-bottom: 16px;
     scrollbar-width: none;
   }
   .screen::-webkit-scrollbar { display: none; }
-  .screen.active { opacity: 1; }
+  .screen.active { opacity: 1; pointer-events: auto; }
 
   .card {
     border-radius: 16px;
@@ -874,6 +875,7 @@ goToScreen(0)
       e.preventDefault()
     }, {passive: false})
   }
+  makeScrollable(document.getElementById('screen0'))
   makeScrollable(document.getElementById('screen1'))
   makeScrollable(document.getElementById('screen2'))
 })()
