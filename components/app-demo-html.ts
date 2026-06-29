@@ -506,6 +506,25 @@ const DEMO_HTML = `<!DOCTYPE html>
               <div style="font-size:16px;font-weight:600;color:#5C4A5E">Brain saying no to all of it?</div>
               <span style="color:#5C4A5E;font-size:18px;font-weight:300">&#8594;</span>
             </div>
+
+            <div style="margin-top:20px">
+              <div class="section-head">
+                <span class="section-title" style="color:#4A6A8A">Later</span>
+                <span class="section-sub">park it, don't lose it</span>
+              </div>
+              <div class="task-row">
+                <div class="task-circle"></div>
+                <div style="flex:1"><div class="task-title">Research new phone contract</div></div>
+              </div>
+              <div class="task-row">
+                <div class="task-circle"></div>
+                <div style="flex:1"><div class="task-title">Sort kitchen cupboards</div></div>
+              </div>
+              <div class="task-row">
+                <div class="task-circle"></div>
+                <div style="flex:1"><div class="task-title">Look into that course</div></div>
+              </div>
+            </div>
           </div>
 
           <div class="win-toast" id="win-toast">
@@ -642,7 +661,7 @@ const DEMO_HTML = `<!DOCTYPE html>
 </div>
 
 <script>
-const SCREEN_DURATION = 7000
+const SCREEN_DURATIONS = [7000, 8500, 7000]
 const SCREENS      = ['screen0','screen1','screen2']
 const SCREEN_NAMES = ['Morning check-in · 1 of 3', 'Today · 2 of 3', 'Patterns · 3 of 3']
 let currentScreen = 0
@@ -727,6 +746,19 @@ function animScreen0() {
   animAfter(6300, function() { document.getElementById('checkin-btn').classList.remove('pressing') })
 }
 
+function smoothScrollTo(el, target, duration) {
+  var start = el.scrollTop
+  var startTime = null
+  function step(ts) {
+    if (!startTime) startTime = ts
+    var p = Math.min((ts - startTime) / duration, 1)
+    var ease = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p
+    el.scrollTop = start + (target - start) * ease
+    if (p < 1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+
 function resetScreen1() {
   var circle = document.getElementById('task2-circle')
   circle.classList.remove('done')
@@ -741,10 +773,11 @@ function resetScreen1() {
 
 function animScreen1() {
   resetScreen1()
-  animAfter(900, function() {
-    document.getElementById('screen1').scrollTo({ top: 290, behavior: 'smooth' })
-  })
-  animAfter(2200, function() {
+  var s1 = document.getElementById('screen1')
+  animAfter(600,  function() { smoothScrollTo(s1, 190, 900) })  // show basics
+  animAfter(1800, function() { smoothScrollTo(s1, 370, 900) })  // show today tasks + later
+  animAfter(3000, function() { smoothScrollTo(s1, 280, 600) })  // scroll back to tasks
+  animAfter(3800, function() {
     var circle = document.getElementById('task2-circle')
     circle.classList.add('done')
     circle.textContent = '✓'
@@ -752,9 +785,9 @@ function animScreen1() {
     document.getElementById('tasks-count').textContent = '2 of 4 done'
     document.getElementById('win-toast').classList.add('visible')
   })
-  animAfter(3400, function() { document.getElementById('win-toast').classList.remove('visible') })
-  animAfter(3800, function() { document.getElementById('slot-freed').classList.add('visible') })
-  animAfter(6200, function() { document.getElementById('slot-freed').classList.remove('visible') })
+  animAfter(5000, function() { document.getElementById('win-toast').classList.remove('visible') })
+  animAfter(5400, function() { document.getElementById('slot-freed').classList.add('visible') })
+  animAfter(7200, function() { document.getElementById('slot-freed').classList.remove('visible') })
 }
 
 function resetScreen2() {
@@ -814,11 +847,11 @@ function goToScreen(idx) {
   document.getElementById(SCREENS[idx]).classList.add('active')
   document.getElementById('screen-indicator').textContent = SCREEN_NAMES[idx]
   updateTabBar(idx)
-  startProgress(idx, SCREEN_DURATION)
+  startProgress(idx, SCREEN_DURATIONS[idx])
   if (idx === 0) animScreen0()
   else if (idx === 1) animScreen1()
   else if (idx === 2) animScreen2()
-  autoTimer = setTimeout(function() { goToScreen((idx + 1) % 3) }, SCREEN_DURATION)
+  autoTimer = setTimeout(function() { goToScreen((idx + 1) % 3) }, SCREEN_DURATIONS[idx])
 }
 
 function nextScreen() { goToScreen((currentScreen + 1) % 3) }
