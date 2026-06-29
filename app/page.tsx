@@ -129,7 +129,7 @@ export default function LandingPage() {
               <div>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', borderRadius: '9999px', padding: '7px 12px', marginBottom: '20px', background: 'rgba(92,74,94,0.08)', border: '1px solid rgba(92,74,94,0.12)', color: '#5C4A5E', fontSize: '0.8125rem', fontWeight: 600 }}>
                   <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: '#5C4A5E' }} />
-                  Daily planning for changing capacity
+                  Free for the first 100 users
                 </div>
 
                 <h1 className="font-display" style={{ fontSize: 'clamp(2.8rem, 6.5vw, 5rem)', lineHeight: 0.96, color: '#2B2F2A', marginBottom: '16px' }}>
@@ -138,14 +138,11 @@ export default function LandingPage() {
                 <p className="font-display" style={{ fontSize: 'clamp(1.4rem, 3.2vw, 2.3rem)', lineHeight: 1.1, color: '#2B2F2A', margin: '0 0 20px' }}>
                   For women whose capacity changes from day to day.
                 </p>
-                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 0 12px', maxWidth: '40rem' }}>
-                  Most planning apps assume your brain shows up the same way every morning. Steady doesn&apos;t. It starts with how you actually are, helps you plan around what&apos;s real, and over time shows you why some days are harder than they should be.
-                </p>
-                <p style={{ fontSize: '0.9375rem', lineHeight: 1.8, color: '#6A6F68', margin: '0 0 24px', maxWidth: '38rem' }}>
-                  Whether that&apos;s neurodivergence, perimenopause, menopause, brain fog, executive dysfunction, poor sleep or the weight of a full life, Steady works with your brain instead of expecting it to perform.
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 0 24px', maxWidth: '40rem' }}>
+                  Most planning apps assume your brain shows up the same way every morning. Steady starts with how you actually are. It plans around what is real, works with neurodivergence, perimenopause, brain fog and fluctuating energy, and over time shows you why some days are harder than they should be.
                 </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
                   <Link
                     href={APP_URL}
                     style={{ padding: '13px 20px', borderRadius: '14px', background: '#5C4A5E', color: '#FFF', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
@@ -158,11 +155,6 @@ export default function LandingPage() {
                   >
                     Why this exists
                   </Link>
-                </div>
-
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 14px', borderRadius: '9999px', background: 'rgba(74,123,92,0.1)', border: '1px solid rgba(74,123,92,0.2)', color: '#2D5A3D', fontSize: '0.875rem' }}>
-                  <span style={{ fontWeight: 700 }}>•</span>
-                  Free for the first 100 users in exchange for honest feedback
                 </div>
               </div>
 
