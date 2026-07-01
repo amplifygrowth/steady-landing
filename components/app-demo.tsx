@@ -46,10 +46,18 @@ export default function AppDemo() {
       link.href = 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap'
       document.head.appendChild(link)
     }
-    const script = document.createElement('script')
-    script.textContent = scriptCode
-    document.body.appendChild(script)
-    document.body.removeChild(script)
+    const runDemo = new Function(`
+      ${scriptCode}
+      window.nextScreen = nextScreen
+      window.prevScreen = prevScreen
+      return function cleanupDemo() {
+        clearAnimTimers()
+        if (autoTimer) clearTimeout(autoTimer)
+        window.nextScreen = undefined
+        window.prevScreen = undefined
+      }
+    `)
+    return runDemo() as () => void
   }, [])
 
   return (
