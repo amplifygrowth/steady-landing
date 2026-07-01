@@ -94,6 +94,9 @@ export default function StartPage() {
               </div>
             ))}
           </div>
+          <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: '#6A6F68', textAlign: 'center', margin: '24px auto 0', maxWidth: '32rem' }}>
+            Every check-in you do teaches you something. Over time, Steady shows you what actually affects your capacity, not what you think affects it.
+          </p>
         </section>
 
         {/* CTA */}
