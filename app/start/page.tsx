@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import AppDemo from '@/components/app-demo'
+import { StartPageViewTracker, TrackedAppLink } from '@/components/landing-tracking'
 
 const APP_URL = process.env.NEXT_PUBLIC_STEADY_APP_URL || 'http://localhost:3000'
 
@@ -12,6 +13,7 @@ export const metadata = {
 export default function StartPage() {
   return (
     <main style={{ minHeight: '100vh', background: '#FAFAF7', fontFamily: 'var(--font-public-sans)' }}>
+      <StartPageViewTracker />
 
       {/* Header */}
       <header style={{ padding: '20px 24px' }}>
@@ -20,9 +22,9 @@ export default function StartPage() {
             <Image src="/icon.svg" alt="" width={20} height={20} />
             <span className="font-display" style={{ fontSize: '1.375rem', color: '#2B2F2A' }}>Steady</span>
           </div>
-          <Link href={APP_URL} style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5C4A5E', textDecoration: 'none' }}>
+          <TrackedAppLink href={APP_URL} event="landing_signin_clicked" location="header" style={{ fontSize: '0.875rem', fontWeight: 600, color: '#5C4A5E', textDecoration: 'none' }}>
             Sign in
-          </Link>
+          </TrackedAppLink>
         </div>
       </header>
 
@@ -43,12 +45,14 @@ export default function StartPage() {
             Most planning apps assume your brain shows up the same way every morning. Steady starts with how you&apos;re actually arriving, and plans around that.
           </p>
 
-          <Link
+          <TrackedAppLink
             href={APP_URL}
+            event="landing_start_signup_clicked"
+            location="hero"
             style={{ display: 'inline-block', padding: '14px 24px', borderRadius: '14px', background: '#5C4A5E', color: '#FFF', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
           >
             Get started free
-          </Link>
+          </TrackedAppLink>
         </section>
 
         {/* Feel seen */}
@@ -108,12 +112,14 @@ export default function StartPage() {
             <p style={{ fontSize: '0.9375rem', lineHeight: 1.7, color: '#6A6F68', margin: '0 0 20px' }}>
               Free for the first 100 users in exchange for honest feedback.
             </p>
-            <Link
+            <TrackedAppLink
               href={APP_URL}
+              event="landing_start_signup_clicked"
+              location="final_cta"
               style={{ display: 'inline-block', padding: '14px 24px', borderRadius: '14px', background: '#5C4A5E', color: '#FFF', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
             >
               Get started free
-            </Link>
+            </TrackedAppLink>
           </div>
         </section>
 

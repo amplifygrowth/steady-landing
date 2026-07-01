@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import DEMO_HTML from './app-demo-html'
+import { trackLandingEvent } from './landing-tracking'
 
 const FRAME_W = 422
 const FRAME_H = 950
@@ -21,6 +22,8 @@ const scopedCss = rawCss
 export default function AppDemo() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const rootRef    = useRef<HTMLDivElement>(null)
+  const viewedRef = useRef(false)
+  const interactedRef = useRef(false)
 
   // Scale the demo to fit its container width
   useEffect(() => {
@@ -60,9 +63,31 @@ export default function AppDemo() {
     return runDemo() as () => void
   }, [])
 
+  useEffect(() => {
+    if (!wrapperRef.current) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting || viewedRef.current) return
+        viewedRef.current = true
+        trackLandingEvent('landing_demo_viewed', { page: 'start' })
+        observer.disconnect()
+      },
+      { threshold: 0.35 }
+    )
+    observer.observe(wrapperRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  const handleDemoInteraction = () => {
+    if (interactedRef.current) return
+    interactedRef.current = true
+    trackLandingEvent('landing_demo_interacted', { page: 'start' })
+  }
+
   return (
     <div
       ref={wrapperRef}
+      onPointerDown={handleDemoInteraction}
       style={{ width: '100%', maxWidth: `${FRAME_W}px`, margin: '0 auto', overflow: 'hidden' }}
     >
       <style dangerouslySetInnerHTML={{ __html: scopedCss }} />

@@ -54,6 +54,16 @@ export default function RootLayout({
         </noscript>
         {children}
         <CookieBanner />
+        <Script id="consent-default" strategy="beforeInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
+        `}</Script>
         <Script id="meta-pixel" strategy="afterInteractive">{`
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -63,8 +73,11 @@ export default function RootLayout({
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window,document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
+          var steadyCookieConsent = false;
+          try { steadyCookieConsent = localStorage.getItem('cookie_consent') === 'accepted'; } catch(e) {}
           fbq('init','1707880166796257');
-          fbq('track','PageView');
+          fbq('consent', steadyCookieConsent ? 'grant' : 'revoke');
+          if (steadyCookieConsent) fbq('track','PageView');
         `}</Script>
         <noscript>
           <img height="1" width="1" style={{ display: 'none' }}

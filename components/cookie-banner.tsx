@@ -5,7 +5,29 @@ import { useEffect, useState } from 'react'
 declare global {
   interface Window {
     dataLayer: Record<string, unknown>[]
+    gtag?: (...args: unknown[]) => void
+    fbq?: (...args: unknown[]) => void
   }
+}
+
+function updateTrackingConsent(consent: 'accepted' | 'declined') {
+  const granted = consent === 'accepted'
+
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({
+    event: granted ? 'cookie_consent_accepted' : 'cookie_consent_declined',
+    cookie_consent: consent,
+  })
+
+  window.gtag?.('consent', 'update', {
+    analytics_storage: granted ? 'granted' : 'denied',
+    ad_storage: granted ? 'granted' : 'denied',
+    ad_user_data: granted ? 'granted' : 'denied',
+    ad_personalization: granted ? 'granted' : 'denied',
+  })
+
+  window.fbq?.('consent', granted ? 'grant' : 'revoke')
+  if (granted) window.fbq?.('track', 'PageView')
 }
 
 export default function CookieBanner() {
@@ -13,9 +35,8 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const stored = localStorage.getItem('cookie_consent')
-    if (stored === 'accepted') {
-      window.dataLayer = window.dataLayer || []
-      window.dataLayer.push({ cookie_consent: 'accepted' })
+    if (stored === 'accepted' || stored === 'declined') {
+      updateTrackingConsent(stored)
     } else if (!stored) {
       setVisible(true)
     }
@@ -23,13 +44,13 @@ export default function CookieBanner() {
 
   function handleAccept() {
     localStorage.setItem('cookie_consent', 'accepted')
-    window.dataLayer = window.dataLayer || []
-    window.dataLayer.push({ event: 'cookie_consent_accepted', cookie_consent: 'accepted' })
+    updateTrackingConsent('accepted')
     setVisible(false)
   }
 
   function handleDecline() {
     localStorage.setItem('cookie_consent', 'declined')
+    updateTrackingConsent('declined')
     setVisible(false)
   }
 
