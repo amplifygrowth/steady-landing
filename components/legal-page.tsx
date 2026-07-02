@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { LegalDocument } from '@/lib/legal-content'
-
-const APP_URL = process.env.NEXT_PUBLIC_STEADY_APP_URL || 'http://localhost:3000'
+import { APP_URL } from '@/lib/app-url'
 
 export default function LegalPage({
   document,

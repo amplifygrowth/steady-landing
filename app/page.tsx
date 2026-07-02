@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import HowSteadyWorks from '@/components/how-steady-works'
-
-const APP_URL = process.env.NEXT_PUBLIC_STEADY_APP_URL || 'http://localhost:3000'
+import { APP_URL } from '@/lib/app-url'
 
 const CAP_COLOR: Record<string, string> = { green: '#4A7B5C', amber: '#6B83A0', red: '#B96A6A' }
 

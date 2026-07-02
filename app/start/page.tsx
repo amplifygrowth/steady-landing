@@ -2,8 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import AppDemo from '@/components/app-demo'
 import { StartPageViewTracker, TrackedAppLink } from '@/components/landing-tracking'
-
-const APP_URL = process.env.NEXT_PUBLIC_STEADY_APP_URL || 'http://localhost:3000'
+import { APP_URL } from '@/lib/app-url'
 
 export const metadata = {
   title: 'Steady — Planning for the day you actually have',
