@@ -29,7 +29,7 @@ export const privacyPolicy: LegalDocument = {
         'Steady is provided by Capable Mind, operating as a sole trader business based in the United Kingdom.',
         'Data controller: Rebecca Allinson, trading as Capable Mind.',
         'ICO registration number: ZC183559',
-        'Contact: support@capablemind.app',
+        'Contact: hello@capablemind.app',
       ],
     },
     {
@@ -58,7 +58,7 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         'For your account information, we process this data under Article 6(1)(b) UK GDPR because it is necessary to provide you with the app and the service you have signed up for.',
         'For health-related information, this is special category data under Article 9 UK GDPR. We process this data on the basis of your explicit consent under Article 9(2)(a). You are asked to give this consent clearly and separately during onboarding before health-related data is collected.',
-        'You may withdraw this consent at any time by emailing us at support@capablemind.app, or by deleting your account in the app\'s settings, which removes your data entirely. If you withdraw consent, we will stop processing new health-related data going forward. Because Steady\'s core features depend on this data, withdrawing consent will mean the app can no longer provide these personalised features, though your account and any non-health data may remain usable where practical.',
+        'You may withdraw this consent at any time by emailing us at hello@capablemind.app, or by deleting your account in the app\'s settings, which removes your data entirely. If you withdraw consent, we will stop processing new health-related data going forward. Because Steady\'s core features depend on this data, withdrawing consent will mean the app can no longer provide these personalised features, though your account and any non-health data may remain usable where practical.',
         'For product analytics and advertising measurement, we only collect data after you accept cookies via our cookie banner, and we rely on that consent as the basis for processing. Analytics data is linked to a random account identifier, not your name or email, and no health-related data, task content, or free-text entries are ever included in it. You can withdraw this consent at any time from Cookie preferences in the app\'s settings.',
         'We use your data to:',
       ],
@@ -92,7 +92,7 @@ export const privacyPolicy: LegalDocument = {
         'Google (Google Tag Manager and Google Analytics): used to understand how people find Steady and move through key flows such as signing up. These only run if you accept cookies.',
         'Meta (Meta Pixel): used to measure whether our adverts are helping people find Steady. The Meta Pixel only runs on our public landing and sign-in pages, only if you accept cookies, and never inside the app itself. Meta never receives any of the information you log in Steady.',
         'Sentry: error monitoring, used to detect and fix problems in the app. Sentry receives technical error details only, never your health data, tasks, or notes.',
-        'Zoho: email hosting for our support and contact addresses at hello@capablemind.app and support@capablemind.app.',
+        'Zoho: email hosting for our contact address at hello@capablemind.app.',
         'Web push providers through your browser: used only if you enable notifications, so reminders can be delivered to your device.',
       ],
     },
@@ -108,14 +108,14 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         'We keep your account and health-related data for as long as your account remains active.',
         'If you delete your account, we will delete or anonymise your personal data, including health-related data, within 90 days, except where we are required to retain certain records for longer to meet a legal obligation.',
-        'You can request deletion of your account and data at any time through the app\'s settings or by contacting us at support@capablemind.app.',
+        'You can request deletion of your account and data at any time through the app\'s settings or by contacting us at hello@capablemind.app.',
       ],
     },
     {
       title: '9. Your rights',
       paragraphs: [
         'Under UK GDPR, you have the right to:',
-        'To exercise any of these rights, please contact us at support@capablemind.app.',
+        'To exercise any of these rights, please contact us at hello@capablemind.app.',
       ],
       bullets: [
         'Access the personal data we hold about you.',
@@ -148,7 +148,7 @@ export const privacyPolicy: LegalDocument = {
     {
       title: '13. Contact us',
       paragraphs: [
-        'If you have any questions, concerns, or requests relating to your data or this policy, please contact us at support@capablemind.app.',
+        'If you have any questions, concerns, or requests relating to your data or this policy, please contact us at hello@capablemind.app.',
       ],
     },
   ],
@@ -272,7 +272,7 @@ export const termsOfService: LegalDocument = {
     {
       title: '4. Your account',
       paragraphs: [
-        'You are responsible for keeping your account secure and for any activity that happens under your account. Please contact us immediately at support@capablemind.app if you believe your account has been accessed without your permission.',
+        'You are responsible for keeping your account secure and for any activity that happens under your account. Please contact us immediately at hello@capablemind.app if you believe your account has been accessed without your permission.',
       ],
     },
     {
@@ -294,7 +294,7 @@ export const termsOfService: LegalDocument = {
       title: '7. Subscriptions and payment',
       paragraphs: [
         'Where Steady offers a paid plan, the price and billing terms will be made clear to you before you pay. Payments are processed securely by Stripe or another clearly named payment provider. We do not store your full payment card details.',
-        'If you have questions about a payment or wish to request a refund, please contact us at support@capablemind.app.',
+        'If you have questions about a payment or wish to request a refund, please contact us at hello@capablemind.app.',
       ],
     },
     {
@@ -312,7 +312,7 @@ export const termsOfService: LegalDocument = {
     {
       title: '10. Ending your account',
       paragraphs: [
-        'You may stop using Steady and delete your account at any time through the app\'s settings or by contacting us at support@capablemind.app. We may suspend or end your access if you breach these terms.',
+        'You may stop using Steady and delete your account at any time through the app\'s settings or by contacting us at hello@capablemind.app. We may suspend or end your access if you breach these terms.',
       ],
     },
     {
@@ -330,7 +330,7 @@ export const termsOfService: LegalDocument = {
     {
       title: '13. Contact us',
       paragraphs: [
-        'If you have any questions about these terms, please contact us at support@capablemind.app.',
+        'If you have any questions about these terms, please contact us at hello@capablemind.app.',
       ],
     },
   ],
