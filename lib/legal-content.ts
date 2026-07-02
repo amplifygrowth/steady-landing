@@ -11,9 +11,14 @@ export type LegalDocument = {
   sections: LegalSection[]
 }
 
+// Recorded against each consent row so we always know which version of the
+// Terms / Privacy Policy a user agreed to. Bump this whenever the legal
+// documents change in a way that affects what users consented to.
+export const CONSENT_VERSION = '1.1'
+
 export const privacyPolicy: LegalDocument = {
   title: 'Privacy Policy',
-  lastUpdated: 'June 2026',
+  lastUpdated: 'July 2026',
   intro: [
     'This policy explains how Capable Mind collects, uses, and protects your personal data when you use Steady.',
   ],
@@ -44,7 +49,8 @@ export const privacyPolicy: LegalDocument = {
         'Health-related information (special category data): this includes whether you have ADHD or autism, your menopause or perimenopause and HRT status, your menstrual cycle status if relevant, and the symptoms, capacity levels, and sleep ratings you log each day.',
         'Daily usage data: the tasks, notes, and reflections you create within the app, including items in Today, Basics, Non-Negotiables, Later, Ideas, and the Worry jar.',
         'Device and notification data: a push notification subscription identifier, if you enable notifications, so we can send you reminders you have asked for.',
-        'Technical data: limited, non-identifiable information about how you use the app, to help us understand and improve it. No health-related data, task content, or free-text entries are ever included in this data.',
+        'Technical data: limited usage information about how you use the app, linked to a random account identifier rather than your name or email, to help us understand and improve it. This is pseudonymous personal data. No health-related data, task content, or free-text entries are ever included in this data.',
+        'Error and diagnostic data: if something goes wrong in the app, basic technical details about the error (such as the browser type and the screen where it happened) are sent to our error monitoring service so we can fix it. This never includes your health data, tasks, or notes.',
       ],
     },
     {
@@ -52,8 +58,8 @@ export const privacyPolicy: LegalDocument = {
       paragraphs: [
         'For your account information, we process this data under Article 6(1)(b) UK GDPR because it is necessary to provide you with the app and the service you have signed up for.',
         'For health-related information, this is special category data under Article 9 UK GDPR. We process this data on the basis of your explicit consent under Article 9(2)(a). You are asked to give this consent clearly and separately during onboarding before health-related data is collected.',
-        'You may withdraw this consent at any time through the app\'s settings or by contacting us. If you withdraw consent, we will stop processing new health-related data going forward. Because Steady\'s core features depend on this data, withdrawing consent will mean the app can no longer provide these personalised features, though your account and any non-health data may remain usable where practical.',
-        'For product analytics, we process limited, non-identifiable usage data on the basis of our legitimate interests in understanding how the app is used and improving it. No health-related data, task content, or free-text entries are ever included in analytics data.',
+        'You may withdraw this consent at any time by emailing us at support@capablemind.app, or by deleting your account in the app\'s settings, which removes your data entirely. If you withdraw consent, we will stop processing new health-related data going forward. Because Steady\'s core features depend on this data, withdrawing consent will mean the app can no longer provide these personalised features, though your account and any non-health data may remain usable where practical.',
+        'For product analytics and advertising measurement, we only collect data after you accept cookies via our cookie banner, and we rely on that consent as the basis for processing. Analytics data is linked to a random account identifier, not your name or email, and no health-related data, task content, or free-text entries are ever included in it. You can withdraw this consent at any time from Cookie preferences in the app\'s settings.',
         'We use your data to:',
       ],
       bullets: [
@@ -78,10 +84,14 @@ export const privacyPolicy: LegalDocument = {
       ],
       bullets: [
         'Supabase: our database, authentication, and backend infrastructure provider, which stores your account and app data securely and handles sign-in.',
+        'Netlify: our hosting provider, which serves the Steady app and website to your browser.',
         'Anthropic: AI processing provider. When you use the task simplification feature, the text of your task is sent to Anthropic to generate suggestions. Task text may contain personal information. No health-related data from your check-ins or profile is sent to Anthropic.',
         'Resend: transactional email delivery, used to send you the one-time sign-in code when you log in to Steady.',
         'Klaviyo: email communications platform, used to send you updates and information about Steady if you have opted in to marketing emails.',
-        'PostHog: product analytics, hosted within the European Union. PostHog helps us understand how the app is used so we can improve it. No health-related data, task content, or free-text entries are ever sent to PostHog.',
+        'PostHog: product analytics, hosted within the European Union. PostHog helps us understand how the app is used so we can improve it. It only runs if you accept cookies. No health-related data, task content, or free-text entries are ever sent to PostHog.',
+        'Google (Google Tag Manager and Google Analytics): used to understand how people find Steady and move through key flows such as signing up. These only run if you accept cookies.',
+        'Meta (Meta Pixel): used to measure whether our adverts are helping people find Steady. The Meta Pixel only runs on our public landing and sign-in pages, only if you accept cookies, and never inside the app itself. Meta never receives any of the information you log in Steady.',
+        'Sentry: error monitoring, used to detect and fix problems in the app. Sentry receives technical error details only, never your health data, tasks, or notes.',
         'Zoho: email hosting for our support and contact addresses at hello@capablemind.app and support@capablemind.app.',
         'Web push providers through your browser: used only if you enable notifications, so reminders can be delivered to your device.',
       ],
@@ -146,20 +156,21 @@ export const privacyPolicy: LegalDocument = {
 
 export const refundPolicy: LegalDocument = {
   title: 'Refund Policy',
-  lastUpdated: 'June 2026',
+  lastUpdated: 'July 2026',
   intro: [],
   sections: [
     {
-      title: 'Founding Year membership',
+      title: 'Steady is currently free',
       paragraphs: [
-        'Steady is currently available as a Founding Year membership at £29, giving you full access to the app for 12 months from the date you join.',
+        'Steady is currently free to use for our early users while we grow and gather feedback. No payment is taken, so no refunds apply at this stage.',
+        'This policy explains how refunds will work when paid plans launch. We will let you know clearly, in advance, before anything becomes chargeable — you will never be charged without actively choosing a paid plan.',
       ],
     },
     {
-      title: 'Our refund policy',
+      title: 'Our refund policy for paid plans',
       paragraphs: [
-        'We offer a 14-day refund period from the date of purchase. If Steady is not right for you, contact us within 14 days at hello@capablemind.app and we will issue a full refund, no questions asked.',
-        'After 14 days, we are unable to offer refunds on the Founding Year membership.',
+        'When paid plans launch, we will offer a 14-day refund period from the date of purchase. If Steady is not right for you, contact us within 14 days at hello@capablemind.app and we will issue a full refund, no questions asked.',
+        'After 14 days, refunds will be at our discretion, except where your statutory rights apply.',
       ],
     },
     {
@@ -185,7 +196,7 @@ export const refundPolicy: LegalDocument = {
 
 export const cookiePolicy: LegalDocument = {
   title: 'Cookie Policy',
-  lastUpdated: 'June 2026',
+  lastUpdated: 'July 2026',
   intro: [],
   sections: [
     {
@@ -197,10 +208,13 @@ export const cookiePolicy: LegalDocument = {
     {
       title: 'What cookies does Steady use?',
       paragraphs: [
-        'We use a small number of cookies to understand how people find and use the Steady website, so we can keep improving it.',
-        'Specifically we use:',
-        'Google Analytics, via Google Tag Manager, to understand how visitors find our site and which pages they visit. This helps us improve the landing page and make Steady easier to find for the people who need it. Google Analytics sets cookies that collect anonymous information about your visit.',
-        'We do not use cookies for advertising targeting until you have given consent via our cookie banner.',
+        'We use a small number of cookies and similar browser storage technologies to understand how people find and use the Steady website and app, so we can keep improving them.',
+        'No analytics or advertising technology loads at all until you accept cookies via our banner. If you decline, none of the services below are loaded and nothing is sent to them.',
+        'If you accept, we use:',
+        'Google Analytics, via Google Tag Manager, to understand how visitors find our site and how people move through key app flows. This helps us improve Steady and make it easier to find for the people who need it. Google Analytics sets cookies that collect limited information about your visit and usage.',
+        'Meta Pixel, to understand whether our adverts are helping people find and sign up for Steady. The Meta Pixel only runs on our public landing and sign-in pages — it never loads inside the app itself.',
+        'PostHog, to understand high-level product usage in the app. We do not send health-related data, task content, notes, symptoms, scores, or free-text entries to PostHog.',
+        'A local consent preference, stored in your browser, so we can remember whether you accepted or declined non-essential cookies. This is stored whether you accept or decline, so we don\'t keep asking.',
       ],
     },
     {
@@ -208,14 +222,15 @@ export const cookiePolicy: LegalDocument = {
       bullets: [
         'We do not sell your data to third parties.',
         'We do not use cookies to build advertising profiles without your consent.',
-        'We do not use cookies inside the Steady app itself.',
+        'We do not include health-related data, task content, notes, symptoms, scores, or free-text entries in analytics or advertising events.',
+        'We do not load any advertising technology inside the app itself, even with consent.',
       ],
     },
     {
       title: 'Your choices',
       paragraphs: [
-        'When you first visit capablemind.app you will see a cookie banner. You can accept or decline non-essential cookies. If you decline, only essential cookies required for the site to function will be used and no analytics data will be collected.',
-        'You can change your mind at any time by clearing your browser cookies and revisiting the site, where the banner will appear again.',
+        'When you first visit the Steady website or app you will see a cookie banner. You can accept or decline non-essential cookies. If you decline, only the local storage required for the service to function will be used and no analytics or advertising events will be sent.',
+        'You can change your mind at any time from Cookie preferences in the app\'s settings (the Yours tab), or by clearing your browser cookies and local storage, after which the banner will appear again.',
       ],
     },
     {
