@@ -36,10 +36,10 @@ export function trackLandingEvent(event: LandingTrackingEvent, payload: Tracking
   window.fbq?.('trackCustom', event, cleanPayload)
 }
 
-export function StartPageViewTracker() {
+export function StartPageViewTracker({ page = 'start' }: { page?: string }) {
   useEffect(() => {
-    trackLandingEvent('landing_page_viewed', { page: 'start' })
-  }, [])
+    trackLandingEvent('landing_page_viewed', { page })
+  }, [page])
 
   return null
 }
@@ -48,19 +48,21 @@ export function TrackedAppLink({
   href,
   event,
   location,
+  page = 'start',
   children,
   style,
 }: {
   href: string
   event: Extract<LandingTrackingEvent, 'landing_signin_clicked' | 'landing_start_signup_clicked'>
   location: string
+  page?: string
   children: ReactNode
   style?: React.CSSProperties
 }) {
   return (
     <Link
       href={href}
-      onClick={() => trackLandingEvent(event, { page: 'start', link_location: location })}
+      onClick={() => trackLandingEvent(event, { page, link_location: location })}
       style={style}
     >
       {children}

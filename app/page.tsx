@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import HowSteadyWorks from '@/components/how-steady-works'
+import { StartPageViewTracker, TrackedAppLink } from '@/components/landing-tracking'
 import { APP_URL } from '@/lib/app-url'
 
 const CAP_COLOR: Record<string, string> = { green: '#4A7B5C', amber: '#6B83A0', red: '#B96A6A' }
@@ -79,6 +80,7 @@ const WHO_FOR = [
 export default function LandingPage() {
   return (
     <main style={{ minHeight: '100vh', background: '#FAFAF7' }}>
+      <StartPageViewTracker page="home" />
       <style>{`
         .ls { max-width: 74rem; margin: 0 auto; }
         .hero-grid { display: grid; gap: 32px; align-items: center; }
@@ -105,12 +107,15 @@ export default function LandingPage() {
             <Image src="/icon.svg" alt="" width={22} height={22} style={{ width: '22px', height: '22px', flexShrink: 0 }} />
             <span className="font-display" style={{ fontSize: '1.5rem', color: '#2B2F2A' }}>Steady</span>
           </div>
-          <Link
+          <TrackedAppLink
             href={APP_URL}
+            event="landing_signin_clicked"
+            location="header"
+            page="home"
             style={{ padding: '10px 14px', borderRadius: '12px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '0.9375rem', fontWeight: 600 }}
           >
             Sign in
-          </Link>
+          </TrackedAppLink>
         </div>
       </header>
 
@@ -142,12 +147,15 @@ export default function LandingPage() {
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
-                  <Link
+                  <TrackedAppLink
                     href={APP_URL}
+                    event="landing_start_signup_clicked"
+                    location="hero"
+                    page="home"
                     style={{ padding: '13px 20px', borderRadius: '14px', background: '#5C4A5E', color: '#FFF', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
                   >
                     Get started free
-                  </Link>
+                  </TrackedAppLink>
                   <Link
                     href="/why"
                     style={{ padding: '13px 20px', borderRadius: '14px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
@@ -469,12 +477,15 @@ export default function LandingPage() {
               Start with a quick check-in, plan around what&apos;s already real, and stop expecting a hard day to behave like an easy one. The first 100 users get free access in exchange for honest feedback.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-              <Link
+              <TrackedAppLink
                 href={APP_URL}
+                event="landing_start_signup_clicked"
+                location="final_cta"
+                page="home"
                 style={{ padding: '14px 22px', borderRadius: '14px', background: '#5C4A5E', color: '#FFF', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
               >
                 Get started free
-              </Link>
+              </TrackedAppLink>
               <Link
                 href="/why"
                 style={{ padding: '14px 22px', borderRadius: '14px', border: '1.5px solid #D8D2D9', color: '#5C4A5E', textDecoration: 'none', fontSize: '1rem', fontWeight: 600 }}
