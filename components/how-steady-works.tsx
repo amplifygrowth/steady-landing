@@ -7,13 +7,13 @@ const steps = [
     id: 1,
     label: 'Morning check-in',
     heading: "Start with the day you've actually got.",
-    copy: 'Rate your energy, focus and mood. Based on how you arrive, Steady works out what kind of day you\'re starting: Momentum, Steady or Low Battery. Add anything already affecting you, like poor sleep or brain fog. Honest beats optimistic.',
+    copy: 'Rate your energy, focus and mood. Based on how you arrive, Steady works out what kind of day you are starting: Momentum, Steady or Low Battery. Add anything already affecting you, like poor sleep or a hard morning. Honest beats optimistic.',
   },
   {
     id: 2,
     label: 'Plan the day',
-    heading: 'Four sections. Four different kinds of support.',
-    copy: 'Non-Negotiables are memory support: fixed commitments that need reminding. Basics are your maintenance tasks, which reset fresh each day. Today holds up to three things you want to attempt. The cap exists because executive dysfunction makes a long open list harder to start from. Later is for tasks that arrive while you\'re mid-something else, so you can park them without switching.',
+    heading: 'Different kinds of load need different places.',
+    copy: 'Non-Negotiables are the things already in your diary. Daily Basics are the everyday things that keep life ticking over. Today holds up to three jobs you would like to get done. Later is for things that can safely wait. Ideas and worries each have their own place too.',
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const steps = [
     id: 4,
     label: 'Evening close',
     heading: 'Record what actually happened.',
-    copy: 'A quick reflection at the end of the day. How did it go? Any symptoms worth noting? How did your capacity finish compared to how it started? This is the data that builds your patterns over time.',
+    copy: 'A quick reflection at the end of the day. How did it go? What affected your energy and focus? How did your capacity finish compared with how it started? Ordinary days, added over time, start to tell a story.',
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const steps = [
     id: 6,
     label: 'Patterns',
     heading: 'Learn from the difference.',
-    copy: "After about a week, Patterns starts showing you how your capacity affects what actually gets done. You'll see whether you plan the same amount regardless of battery level, whether Momentum days genuinely translate into more done, and what tends to affect your harder days. Understanding your patterns is more useful than trying to override them.",
+    copy: "After about a week, Patterns starts showing you how your capacity changes over time. You'll see how mornings compare with evenings, what affects energy and focus, and what helps you recover.",
   },
 ] as const
 
@@ -81,7 +81,7 @@ function StepScreen({ step }: { step: number }) {
           <div style={{ ...surfaceStyle, padding: '12px 14px' }}>
             <div style={{ fontSize: '0.75rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>What&apos;s influencing your battery?</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-              {['Poor sleep', 'Woke multiple times', 'Brain fog'].map(item => (
+              {['Poor sleep', 'Woke multiple times', 'Stress already present'].map(item => (
                 <div key={item} style={{ padding: '5px 10px', borderRadius: '9999px', background: '#F3F0F4', border: '1px solid #D8D2D9', color: '#5C4A5E', fontSize: '0.8125rem' }}>
                   ✓ {item}
                 </div>
@@ -106,7 +106,7 @@ function StepScreen({ step }: { step: number }) {
         <div style={{ padding: '12px 18px 18px', display: 'grid', gap: '8px' }}>
           {([
             { title: 'Non-Negotiables', color: '#5C4A5E', items: ['Work 9–5', 'School pickup 3:30'], note: 'memory support' },
-            { title: 'Basics', color: '#3A7A50', items: ['Reset the kitchen', 'Take medication'], note: 'maintenance' },
+            { title: 'Daily Basics', color: '#3A7A50', items: ['Reset the kitchen', 'Take medication'], note: 'life ticking over' },
             { title: 'Today', color: '#5C4A5E', items: ['Make GP appointment', 'Send clothes order back'], note: 'up to 3' },
             { title: 'Later', color: '#4A6A8A', items: ['Research new phone contract'], note: 'capture' },
           ] as const).map(({ title, color, items, note }) => (
@@ -170,9 +170,9 @@ function StepScreen({ step }: { step: number }) {
             </div>
           </div>
           <div style={{ ...surfaceStyle, padding: '14px' }}>
-            <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>Evening symptoms</div>
+            <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: '#2B2F2A', marginBottom: '8px' }}>What affected today?</div>
             <div style={{ display: 'flex', gap: '7px', flexWrap: 'wrap' }}>
-              {['Brain fog', 'Overwhelm', 'Low mood'].map(item => (
+              {['Poor sleep', 'Overwhelm', 'A hard afternoon'].map(item => (
                 <div key={item} style={{ padding: '6px 10px', borderRadius: '9999px', background: '#F3F0F4', border: '1px solid #D8D2D9', color: '#5C4A5E', fontSize: '0.8125rem' }}>✓ {item}</div>
               ))}
             </div>
@@ -199,7 +199,7 @@ function StepScreen({ step }: { step: number }) {
           <div style={{ ...surfaceStyle, padding: '14px 16px' }}>
             <div style={{ fontSize: '0.6875rem', fontWeight: 700, color: '#8A8F86', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: '7px' }}>Today&apos;s pattern</div>
             <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>
-              Your basics stayed consistent even on a Low Battery day.
+              Your Daily Basics stayed consistent even on a Low Battery day.
             </p>
           </div>
           <div style={{ ...surfaceStyle, padding: '14px 16px' }}>
@@ -256,7 +256,7 @@ function StepScreen({ step }: { step: number }) {
         </div>
         <div style={{ ...surfaceStyle, padding: '12px 14px', background: '#F3F0F4' }}>
           <div style={{ fontSize: '0.6875rem', fontWeight: 700, color: '#5C4A5E', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '8px' }}>What I&apos;ve learned</div>
-          {['Brain fog appears more often after disturbed sleep.', 'Low Battery mornings recover 40% of the time.'].map((obs, i) => (
+          {['Low sleep and difficult mornings often show up together.', 'Low Battery mornings sometimes recover by the end of the day.'].map((obs, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '7px', paddingTop: i === 0 ? 0 : '7px', marginTop: i === 0 ? 0 : '7px', borderTop: i === 0 ? 'none' : '1px solid rgba(92,74,94,0.1)' }}>
               <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#5C4A5E', flexShrink: 0, marginTop: '5px' }} />
               <p style={{ fontSize: '0.8125rem', color: '#2B2F2A', lineHeight: 1.5, margin: 0 }}>{obs}</p>
@@ -324,7 +324,7 @@ export default function HowSteadyWorks() {
                 It doesn&apos;t assume every day starts from the same place, and it doesn&apos;t treat changing capacity as failure.
               </p>
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#6A6F68', margin: 0 }}>
-                Steady helps you plan around your real capacity, understand what each kind of day actually produces, and stop blaming yourself for the difference.
+                Steady helps you plan around your real capacity, understand what ordinary days are showing you, and make the plan fit the day you actually have.
               </p>
             </div>
 

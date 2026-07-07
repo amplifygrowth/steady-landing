@@ -28,20 +28,21 @@ export default function WhyPage() {
           <p>I built this because I needed it myself.</p>
 
           <p>
-            I&apos;m a 49-year-old woman with inattentive ADHD, and I&apos;m perimenopausal. Most days I&apos;m
-            completely capable. This isn&apos;t about ability, it&apos;s executive dysfunction. Some days my
-            brain just says no, to filling or emptying the dishwasher, to mopping the floors, to
-            resetting the house, to the inbox, to all of it, and no amount of willpower changes that.
-            Some days it&apos;s smaller than that, walking into a room and forgetting why, losing a word
-            mid-sentence, reading the same paragraph three times. I live alone, so there&apos;s nobody to
-            notice, nobody to nudge me, nobody to pick up the slack on the days it all feels like too
-            much. Whatever gets done, I&apos;m the one who has to decide to do it.
+            I&apos;m a 49-year-old woman whose capacity changes from day to day. Most days I&apos;m completely
+            capable. Some days my brain just says no, to filling or emptying the dishwasher, to
+            mopping the floors, to resetting the house, to the inbox, to all of it, and no amount of
+            willpower changes that. Some days it&apos;s smaller than that, walking into a room and
+            forgetting why, losing a word mid-sentence, reading the same paragraph three times. I live
+            alone, so there&apos;s nobody to notice, nobody to nudge me, nobody to pick up the slack on
+            the days it all feels like too much. Whatever gets done, I&apos;m the one who has to decide to
+            do it.
           </p>
 
           <p>
-            But this isn&apos;t just an ADHD app, or a perimenopause app. If &ldquo;I&apos;m capable, it&apos;s just
-            my brain saying no today&rdquo; sounds familiar, whatever the reason, perimenopause,
-            menopause, ADHD, burnout, bad sleep, or just life being a lot some weeks, this is for you.
+            But this isn&apos;t an app that needs a diagnosis or a particular life stage to make sense. If
+            &ldquo;I&apos;m capable, it&apos;s just my brain saying no today&rdquo; sounds familiar, whatever the reason,
+            neurodiversity, perimenopause, menopause, burnout, bad sleep, or just life being a lot
+            some weeks, this is for you.
             Your life might look completely different from mine, kids, a partner, a job with no
             flexibility, all of it at once. But the thing that&apos;s true either way is this: life
             doesn&apos;t stop because you&apos;re having a bad day. The school run still happens. The work
@@ -51,25 +52,18 @@ export default function WhyPage() {
 
           <p>
             That&apos;s the whole idea. Every morning, this app asks how you are before it asks what
-            you&apos;ll do, then sizes the day around what&apos;s actually on it. Three things, chosen by you,
-            that&apos;s the cap, on purpose, on top of whatever&apos;s already locked in. If you&apos;re the kind
-            of person who starts five things and finishes none of them, the cap isn&apos;t a limit, it&apos;s
-            the bit that makes you choose, and finish, before you&apos;re allowed to start something new.
-            It also means you only have to decide once. On the days your brain&apos;s foggy and every
-            decision feels like wading through treacle, you&apos;ve already done the hard part this
-            morning, the rest of the day is just doing, not deciding. Everything else either has its
-            own time slot, ticks along quietly in the background, or waits in Later until it&apos;s wanted
-            again. Nothing rolls over without you deciding what happens to it. Nothing keeps score
+            you&apos;ll do, then sizes the day around what&apos;s actually on it. Some things already own your
+            day. Some things keep life ticking over. Some are jobs you would like to get done. Some
+            are ideas, worries, or things that can safely wait. Steady gives each of those a proper
+            place. Nothing rolls over without you deciding what happens to it. Nothing keeps score
             with streaks, because a broken streak on a bad week just turns a hard day into a failure
             too.
           </p>
 
           <p>
             This isn&apos;t a medical app, and it doesn&apos;t try to predict your cycle, your mood, or your
-            symptoms, perimenopause and menopause are unpredictable enough without an app pretending
-            otherwise. What it does do is notice patterns over time, so the bad days start to make a
-            bit more sense, and so you&apos;ve got something real to bring to a GP appointment if you want
-            one.
+            health. What it does do is notice patterns over time, so ordinary days start to tell a
+            clearer story, and so you&apos;ve got something real to reflect on or share if you want to.
           </p>
 
           <p>

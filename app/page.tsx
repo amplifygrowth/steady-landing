@@ -25,17 +25,17 @@ const FOUR_SECTIONS = [
     accent: '#5C4A5E',
     bg: '#F3F0F4',
     border: '#D8D2D9',
-    purpose: 'Memory support',
-    desc: 'Work, appointments, school run. Fixed commitments that need to happen. They appear as reminders, not tasks, because brain fog, neurodivergent thinking and menopause can make even important things easy to lose track of.',
+    purpose: 'Already in the diary',
+    desc: 'Work, appointments, school run. These are the fixed points that already own part of your day. Steady keeps them visible as commitments, not as another set of tasks to achieve.',
     items: ['Work 9–5', 'GP appointment 2pm', 'School pickup 3:30pm'],
   },
   {
-    label: 'Basics',
+    label: 'Daily Basics',
     accent: '#3A7A50',
     bg: '#EAF4EE',
     border: '#B8D9C4',
-    purpose: 'Maintenance',
-    desc: 'The everyday things that keep life functioning. For many users these are exactly the tasks executive dysfunction makes hard: washing up, mopping the floor, taking medication. They reset fresh every day. Never a debt from yesterday.',
+    purpose: 'Life ticking over',
+    desc: 'The everyday things that keep life functioning. Washing up, medication, dinner, walking the dog. They reset fresh each day, without turning yesterday into a debt.',
     items: ['Reset the kitchen', 'Take medication', 'Move your body'],
   },
   {
@@ -43,8 +43,8 @@ const FOUR_SECTIONS = [
     accent: '#5C4A5E',
     bg: '#F3F0F4',
     border: '#D8D2D9',
-    purpose: 'Executive dysfunction support',
-    desc: 'Up to three things you want to attempt. The cap is deliberate. Executive dysfunction makes choosing from a long open list harder than the task itself. Three gives your brain somewhere to start instead of something to get stuck in.',
+    purpose: 'In focus today',
+    desc: 'Up to three things you would like to get done today. The cap is deliberate. It is not about doing less. It is about reducing the overwhelm of a long open list.',
     items: ['Make GP appointment', 'Send clothes order back', 'Reply to that email'],
   },
   {
@@ -52,28 +52,46 @@ const FOUR_SECTIONS = [
     accent: '#4A6A8A',
     bg: '#E4EAF0',
     border: '#B8C8D9',
-    purpose: 'Task parking',
-    desc: 'For the tasks that arrive while you\'re supposed to be doing something else. You need to write a report but your brain has decided the kitchen cupboards need rearranging right now. Park it here instead of switching. Out of your head, not lost, not today\'s pressure.',
+    purpose: 'Can safely wait',
+    desc: 'For the tasks that arrive while you are supposed to be doing something else. Out of your head, not lost, and not asking to be dealt with today.',
     items: ['Sort the kitchen cupboards', 'Research new phone contract', 'Check holiday dates'],
+  },
+  {
+    label: 'Ideas',
+    accent: '#7A5D3A',
+    bg: '#F5EFE4',
+    border: '#E4D2B8',
+    purpose: 'Worth keeping',
+    desc: 'Ideas need somewhere to land before they disappear. Steady gives them a home without pretending they belong in today\'s plan.',
+    items: ['Birthday present idea', 'Weekend trip thought', 'Thing to ask at work'],
+  },
+  {
+    label: 'Worry Jar',
+    accent: '#7A5368',
+    bg: '#F4E8EF',
+    border: '#DEC4D2',
+    purpose: 'Not today\'s plan',
+    desc: 'Worries can take up as much room as tasks. The Worry Jar gives them somewhere to go so they do not have to compete with what needs your attention today.',
+    items: ['Money thing to think about', 'Health worry', 'Message I keep replaying'],
   },
 ]
 
 const WHO_FOR = [
   {
-    heading: 'Neurodivergent: ADHD, autism, dyspraxia and more',
-    body: 'Executive dysfunction means the gap between wanting to do something and actually starting it can feel impossible. Steady works with that reality, not against it. The three-task cap, the Later capture space and the Patterns section are built around how neurodivergent brains actually work.',
+    heading: 'Busy midlife women',
+    body: 'Work, home, family, admin, appointments, dinner, messages, things to remember and things you are worried about. Steady is for the days when too much is being carried in your head at once.',
   },
   {
-    heading: 'Perimenopause and menopause',
-    body: 'Brain fog, memory lapses, fluctuating energy and unpredictable focus are real symptoms, not personal failings. Steady helps you track what affects your capacity and see patterns in how those symptoms show up across your days.',
+    heading: 'Changing capacity',
+    body: 'Some days you have more energy and focus than others. Steady starts from that reality instead of asking you to plan as if every day is the same.',
   },
   {
-    heading: 'Fluctuating executive function',
-    body: 'You don\'t need a diagnosis for Steady to help. If your ability to start tasks, hold focus or manage your day varies from one morning to the next, for any reason, Steady is built for exactly that experience.',
+    heading: 'Neurodiversity, menopause and more',
+    body: 'Some users are neurodivergent. Some are peri or post menopausal. Some simply feel overwhelmed by everything they are carrying. None of those things are requirements.',
   },
   {
-    heading: 'Anyone who\'s felt failed by productivity systems',
-    body: 'Most planning tools assume a consistent brain. They reward streaks, punish missed days and treat changing plans as failure. Steady assumes the opposite: that your capacity changes, that your plan should change with it, and that understanding your patterns is more useful than trying to override them.',
+    heading: 'People failed by ordinary planners',
+    body: 'Most planning tools flatten everything into one long list. Steady gives different kinds of mental load different places, so everything has a home without everything demanding attention today.',
   },
 ]
 
@@ -140,10 +158,10 @@ export default function LandingPage() {
                   Steady
                 </h1>
                 <p className="font-display" style={{ fontSize: 'clamp(1.4rem, 3.2vw, 2.3rem)', lineHeight: 1.1, color: '#2B2F2A', margin: '0 0 20px' }}>
-                  For women whose capacity changes from day to day.
+                  Planning for the day you actually have.
                 </p>
                 <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 0 24px', maxWidth: '40rem' }}>
-                  Most planning apps assume your brain shows up the same way every morning. Steady starts with how you actually are. It plans around what is real, works with neurodivergence, perimenopause, brain fog and fluctuating energy, and over time shows you why some days are harder than they should be.
+                  Steady helps overwhelmed midlife women organise what is already in the diary, what keeps life ticking over, what they would like to get done today, and what can safely wait.
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
@@ -187,7 +205,7 @@ export default function LandingPage() {
 
                   {[
                     { label: 'Non-Negotiables', items: ['Work 9–5', 'School pickup 3:30'] },
-                    { label: 'Basics', items: ['Reset the kitchen ✓', 'Take medication'] },
+                    { label: 'Daily Basics', items: ['Reset the kitchen ✓', 'Take medication'] },
                     { label: 'Today', items: ['Make GP appointment', 'Send clothes order back'] },
                     { label: 'Later', items: ['Research new phone contract', 'Look into that course'] },
                   ].map(({ label, items }) => (
@@ -210,20 +228,20 @@ export default function LandingPage() {
         <div className="ls">
           <div style={{ maxWidth: '54rem', margin: '0 auto' }}>
             <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '16px' }}>
-              The question Steady exists to answer
+              Why ordinary planning can fall apart
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', lineHeight: 1.05, color: '#2B2F2A', marginBottom: '24px' }}>
-              &ldquo;Why couldn&apos;t I get the things done that I wanted to do today?&rdquo;
+              Life isn&apos;t one long to-do list.
             </h2>
             <div style={{ display: 'grid', gap: '16px' }}>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                For women living with neurodivergence, executive dysfunction, perimenopause, menopause or fluctuating capacity, this question arrives often, and rarely gets a useful answer. Standard productivity advice says plan better, be more consistent, try harder. But when your brain&apos;s ability to start and finish tasks changes from day to day, the problem isn&apos;t the plan. The system was built for a different kind of brain.
+                Some things already own your day. Some things happen every day. Some are jobs you would like to get done. Some are ideas. Some are worries. Some can safely wait.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                Executive dysfunction isn&apos;t laziness or lack of motivation. It&apos;s a real barrier between wanting to do something and being able to start it. Brain fog isn&apos;t tiredness. It&apos;s cognitive impairment that affects memory, focus and decision-making. These experiences are real, they fluctuate, and they deserve a tool that takes them seriously.
+                Most planners fail because they flatten every kind of thought into the same list. Steady does something calmer: it gives different kinds of mental load different places.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                Steady doesn&apos;t coach you to be more productive. It helps you understand what your brain can actually do at different capacity levels, based on your own data, so you can plan realistically, stop blaming yourself for hard days, and start noticing what actually helps.
+                Everything in your head deserves a home. Not everything deserves your attention today.
               </p>
             </div>
           </div>
@@ -238,10 +256,10 @@ export default function LandingPage() {
               How the Today screen works
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
-              This isn&apos;t a task list. It&apos;s four different kinds of support.
+              Steady gives each kind of mental load a proper place.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6A6F68', margin: 0 }}>
-              Each section solves a different problem that fluctuating executive function creates. They don&apos;t blend into each other. They each do one specific thing.
+              The Today screen is not one long list. It separates what is already happening, what keeps life ticking over, what is in focus, and what can wait.
             </p>
           </div>
 
@@ -281,10 +299,10 @@ export default function LandingPage() {
               What you learn over time
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
-              Understanding why some days are harder than they should be.
+              Ordinary days, added over time, start to tell a story.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: 0 }}>
-              After a week or so of check-ins, Steady starts building a picture of how your capacity affects what actually gets done. The Patterns screen answers the question you&apos;ve probably been asking in the dark.
+              One day tells you very little. Patterns help you understand how mornings compare with evenings, what affects energy and focus, what helps you recover, and how your capacity changes over time.
             </p>
           </div>
 
@@ -320,7 +338,7 @@ export default function LandingPage() {
               </div>
 
               <p className="font-display" style={{ fontSize: '1.35rem', lineHeight: 1.25, color: '#2B2F2A', margin: '0 0 20px' }}>
-                Planning stayed consistent. Completion didn&apos;t.
+                Capacity changes the shape of the day.
               </p>
 
               <div style={{ display: 'grid', gap: '18px', marginBottom: '20px' }}>
@@ -345,10 +363,10 @@ export default function LandingPage() {
 
               <div style={{ borderTop: '1px solid #F0F1EC', paddingTop: '16px', display: 'grid', gap: '12px' }}>
                 <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>
-                  You planned a similar number of tasks regardless of battery level, around 3 each day. On Low Battery days, you completed 48% of them. On Momentum days, 87%. The difference isn&apos;t the plan. It&apos;s the capacity.
+                  You planned a similar number of tasks regardless of battery level, around 3 each day. On Low Battery days, fewer were completed. On Momentum days, more were completed. The pattern helps show what was realistic, not what you should have forced.
                 </p>
                 <p style={{ fontSize: '0.9375rem', color: '#2B2F2A', lineHeight: 1.55, margin: 0 }}>
-                  Basics stayed more consistent across capacity levels than planned tasks did.
+                  Daily Basics stayed more consistent across capacity levels than planned tasks did.
                 </p>
               </div>
             </div>
@@ -360,7 +378,7 @@ export default function LandingPage() {
               </div>
               <div style={{ display: 'grid', gap: '12px' }}>
                 {[
-                  'Brain fog appears more often after disturbed sleep or fewer than 5 hours.',
+                  'Low sleep and difficult mornings often show up together.',
                   'Low Battery mornings recover to Steady by end of day around 40% of the time.',
                   'You started Steady but finished Low Battery on 4 of the last 7 days, usually after 2pm.',
                 ].map((obs, i) => (
@@ -387,10 +405,10 @@ export default function LandingPage() {
                 At the end of the day, one honest observation.
               </h2>
               <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 0 14px' }}>
-                After your evening close, Steady looks at what actually happened and offers a single sentence based on your own data. Not encouragement. Not a score. An observation grounded in your history.
+                After your evening close, Steady looks at what actually happened and offers a single sentence based on your own entries. Not encouragement. Not a score. Just a real observation.
               </p>
               <p style={{ fontSize: '0.9375rem', lineHeight: 1.8, color: '#6A6F68', margin: 0 }}>
-                On a Low Battery day where you completed more tasks than usual, it notices. On a day where your basics held steady even when everything else fell away, it notices that too. It only says something when there&apos;s something real to say.
+                On a Low Battery day where you completed more tasks than usual, it notices. On a day where your Daily Basics held steady even when everything else fell away, it notices that too. It only says something when there is something real to say.
               </p>
             </div>
 
@@ -421,10 +439,10 @@ export default function LandingPage() {
               Who Steady is for
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
-              Built for women whose brains and bodies don&apos;t stay consistent.
+              Built for busy women whose capacity does not stay consistent.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6A6F68', margin: 0 }}>
-              Steady was built by someone who lives with exactly this. It isn&apos;t based on productivity research. It&apos;s based on the real experience of trying to function with a brain that changes from morning to morning.
+              You do not need a diagnosis or a particular life stage for Steady to make sense. It is for women who need the plan to fit the day they actually have.
             </p>
           </div>
 
@@ -452,8 +470,8 @@ export default function LandingPage() {
             </h3>
             <div className="help-grid">
               {[
-                ['Not a productivity app', 'Steady doesn\'t try to make you more efficient. It tries to help you understand your own patterns so you can be more realistic about what each kind of day can hold.'],
-                ['Not a habit tracker', 'There are no streaks. Missing a day doesn\'t create a debt. Your basics reset fresh each morning. Changing your plan isn\'t failure. It\'s the app working as intended.'],
+                ['Not a productivity app', 'Steady is not about endless output. It helps you make today\'s plan fit today\'s reality.'],
+                ['Not a habit tracker', 'There are no streaks. Missing a day doesn\'t create a debt. Your Daily Basics reset fresh each morning.'],
                 ['Not medical advice', 'Steady is a planning and reflection tool. It helps you notice patterns. It doesn\'t diagnose, treat or replace conversations with your GP, psychiatrist or specialist.'],
               ].map(([title, body]) => (
                 <div key={title as string} style={{ borderRadius: '16px', padding: '18px', background: 'rgba(255,255,255,0.6)', border: '1px solid rgba(229,224,232,0.8)' }}>
@@ -471,10 +489,10 @@ export default function LandingPage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ borderRadius: '28px', padding: '40px 28px', background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(229,224,232,0.9)', boxShadow: '0 10px 32px rgba(92,74,94,0.08)' }}>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '14px' }}>
-              Built for the days your brain says no.
+              You don&apos;t have to sort everything out today.
             </h2>
             <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 auto 24px', maxWidth: '38rem' }}>
-              Start with a quick check-in, plan around what&apos;s already real, and stop expecting a hard day to behave like an easy one. The first 100 users get free access in exchange for honest feedback.
+              Just start with today. The first 100 users get free access in exchange for honest feedback.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
               <TrackedAppLink
