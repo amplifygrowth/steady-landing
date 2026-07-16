@@ -7,13 +7,13 @@ const steps = [
     id: 1,
     label: 'Morning check-in',
     heading: "Start with the day you've actually got.",
-    copy: 'Rate your energy, focus and mood. Based on how you arrive, Steady works out what kind of day you are starting: Momentum, Steady or Low Battery. Add anything already affecting you, like poor sleep or a hard morning. Honest beats optimistic.',
+    copy: "Rate your energy, focus and mood. Based on how you arrive, Steady works out what kind of day you're starting: Momentum, Steady or Low Battery, the battery everything else gets planned around. Add anything already affecting you, like poor sleep or a hard morning. Honest beats optimistic.",
   },
   {
     id: 2,
     label: 'Plan the day',
-    heading: 'Different kinds of load need different places.',
-    copy: 'Non-Negotiables are the things already in your diary. Daily Basics are the everyday things that keep life ticking over. Today holds up to three jobs you would like to get done. Later is for things that can safely wait. Ideas and worries each have their own place too.',
+    heading: "Count what's already spoken for, then choose what else fits.",
+    copy: "Non-Negotiables and Daily Basics already use part of today's battery: work, appointments, the school run, keeping life ticking over. Today holds up to three jobs you'd like to get done, chosen once you can see what's left. Later, Ideas and worries each have their own place too.",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const steps = [
     id: 4,
     label: 'Evening close',
     heading: 'Record what actually happened.',
-    copy: 'A quick reflection at the end of the day. How did it go? What affected your energy and focus? How did your capacity finish compared with how it started? Ordinary days, added over time, start to tell a story.',
+    copy: 'A quick reflection at the end of the day. How did it go? What affected your energy and focus? How did your battery finish compared with how it started? Ordinary days, added over time, start to tell a story.',
   },
   {
     id: 5,
@@ -36,8 +36,8 @@ const steps = [
   {
     id: 6,
     label: 'Patterns',
-    heading: 'Learn from the difference.',
-    copy: "After about a week, Patterns starts showing you how your capacity changes over time. You'll see how mornings compare with evenings, what affects energy and focus, and what helps you recover.",
+    heading: 'See what tends to be happening when starting feels harder.',
+    copy: "After about a week, Patterns starts showing you the evidence, not a diagnosis. You'll see how mornings compare with evenings, how your battery tends to change through the day, and what seems to help you recover.",
   },
 ] as const
 
@@ -321,10 +321,10 @@ export default function HowSteadyWorks() {
                 How Steady Works
               </h2>
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#4A4E47', margin: '0 0 10px' }}>
-                It doesn&apos;t assume every day starts from the same place, and it doesn&apos;t treat changing capacity as failure.
+                It doesn&apos;t assume every day starts from the same place, and it doesn&apos;t ask you to explain why a small task feels hard before it helps.
               </p>
               <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#6A6F68', margin: 0 }}>
-                Steady helps you plan around your real capacity, understand what ordinary days are showing you, and make the plan fit the day you actually have.
+                Steady counts what already has to happen, helps you choose what else fits, and turns a hard-to-start task into a manageable first step.
               </p>
             </div>
 

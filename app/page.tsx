@@ -25,8 +25,8 @@ const FOUR_SECTIONS = [
     accent: '#5C4A5E',
     bg: '#F3F0F4',
     border: '#D8D2D9',
-    purpose: 'Already in the diary',
-    desc: 'Work, appointments, school run. These are the fixed points that already own part of your day. Steady keeps them visible as commitments, not as another set of tasks to achieve.',
+    purpose: 'Already spoken for',
+    desc: 'Work, appointments, school run. These already use part of today\'s battery before you choose anything else. Steady keeps them visible as commitments, not as more tasks to start.',
     items: ['Work 9–5', 'GP appointment 2pm', 'School pickup 3:30pm'],
   },
   {
@@ -35,7 +35,7 @@ const FOUR_SECTIONS = [
     bg: '#EAF4EE',
     border: '#B8D9C4',
     purpose: 'Life ticking over',
-    desc: 'The everyday things that keep life functioning. Washing up, medication, dinner, walking the dog. They reset fresh each day, without turning yesterday into a debt.',
+    desc: 'The everyday things that keep life functioning, and quietly use battery too. Washing up, medication, dinner, walking the dog. They reset fresh each day, without turning yesterday into a debt.',
     items: ['Reset the kitchen', 'Take medication', 'Move your body'],
   },
   {
@@ -43,8 +43,8 @@ const FOUR_SECTIONS = [
     accent: '#5C4A5E',
     bg: '#F3F0F4',
     border: '#D8D2D9',
-    purpose: 'In focus today',
-    desc: 'Up to three things you would like to get done today. The cap is deliberate. It is not about doing less. It is about reducing the overwhelm of a long open list.',
+    purpose: 'What else fits',
+    desc: 'Up to three things you would like to get done today, chosen once you can see what battery is left. The cap is not about doing less. It is about making starting feel possible.',
     items: ['Make GP appointment', 'Send clothes order back', 'Reply to that email'],
   },
   {
@@ -53,7 +53,7 @@ const FOUR_SECTIONS = [
     bg: '#E4EAF0',
     border: '#B8C8D9',
     purpose: 'Can safely wait',
-    desc: 'For the tasks that arrive while you are supposed to be doing something else. Out of your head, not lost, and not asking to be dealt with today.',
+    desc: 'For the tasks that arrive while you are supposed to be doing something else. Out of your head, not lost, and not asking to be started today.',
     items: ['Sort the kitchen cupboards', 'Research new phone contract', 'Check holiday dates'],
   },
   {
@@ -71,7 +71,7 @@ const FOUR_SECTIONS = [
     bg: '#F4E8EF',
     border: '#DEC4D2',
     purpose: 'Not today\'s plan',
-    desc: 'Worries can take up as much room as tasks. The Worry Jar gives them somewhere to go so they do not have to compete with what needs your attention today.',
+    desc: 'Worries can take up as much battery as tasks. The Worry Jar gives them somewhere to go so they do not have to compete with what needs your attention today.',
     items: ['Money thing to think about', 'Health worry', 'Message I keep replaying'],
   },
 ]
@@ -79,19 +79,19 @@ const FOUR_SECTIONS = [
 const WHO_FOR = [
   {
     heading: 'Busy midlife women',
-    body: 'Work, home, family, admin, appointments, dinner, messages, things to remember and things you are worried about. Steady is for the days when too much is being carried in your head at once.',
+    body: 'Work, home, family, admin, appointments, dinner, messages, things to remember and things you are worried about. Steady is for the days when too much has already used up your battery before you even start.',
   },
   {
     heading: 'Changing capacity',
-    body: 'Some days you have more energy and focus than others. Steady starts from that reality instead of asking you to plan as if every day is the same.',
+    body: 'Some days you have more energy and focus than others. Steady starts from that reality instead of asking you to plan as if every day gives you the same battery.',
   },
   {
     heading: 'Neurodiversity, menopause and more',
     body: 'Some users are neurodivergent. Some are peri or post menopausal. Some simply feel overwhelmed by everything they are carrying. None of those things are requirements.',
   },
   {
-    heading: 'People failed by ordinary planners',
-    body: 'Most planning tools flatten everything into one long list. Steady gives different kinds of mental load different places, so everything has a home without everything demanding attention today.',
+    heading: 'Anyone stuck on an easy-sounding task',
+    body: 'The clothes return. The unopened post. The appointment you keep meaning to book. Steady does not ask you to explain why it feels hard. It just helps you find a first step small enough to actually start.',
   },
 ]
 
@@ -158,10 +158,10 @@ export default function LandingPage() {
                   Steady
                 </h1>
                 <p className="font-display" style={{ fontSize: 'clamp(1.4rem, 3.2vw, 2.3rem)', lineHeight: 1.1, color: '#2B2F2A', margin: '0 0 20px' }}>
-                  Planning for the day you actually have.
+                  Some tasks are small. The resistance to starting them is not.
                 </p>
                 <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 0 24px', maxWidth: '40rem' }}>
-                  Steady helps overwhelmed midlife women organise what is already in the diary, what keeps life ticking over, what they would like to get done today, and what can safely wait.
+                  Steady accounts for what already has to happen, helps you choose what else fits today, and turns a hard-to-start task into a manageable first step.
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
@@ -200,7 +200,7 @@ export default function LandingPage() {
                       <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#6B83A0', display: 'inline-block' }} />
                       <span style={{ fontSize: '0.6875rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#6B83A0', fontWeight: 700 }}>Steady day</span>
                     </div>
-                    <p className="font-display" style={{ fontSize: '1.1rem', lineHeight: 1.2, color: '#2B2F2A', margin: '0 0 4px' }}>Two real things done beats three half-started.</p>
+                    <p className="font-display" style={{ fontSize: '1.1rem', lineHeight: 1.2, color: '#2B2F2A', margin: '0 0 4px' }}>Small step done beats big plan half-started.</p>
                   </div>
 
                   {[
@@ -228,20 +228,20 @@ export default function LandingPage() {
         <div className="ls">
           <div style={{ maxWidth: '54rem', margin: '0 auto' }}>
             <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '16px' }}>
-              Why ordinary planning can fall apart
+              Why small things can feel enormous
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', lineHeight: 1.05, color: '#2B2F2A', marginBottom: '24px' }}>
-              Life isn&apos;t one long to-do list.
+              The task is small. Starting it is not.
             </h2>
             <div style={{ display: 'grid', gap: '16px' }}>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                Some things already own your day. Some things happen every day. Some are jobs you would like to get done. Some are ideas. Some are worries. Some can safely wait.
+                Returning the clothes order. Opening the post. Clearing the floordrobe. Booking the appointment. None of these are big. All of them can sit untouched for weeks.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                Most planners fail because they flatten every kind of thought into the same list. Steady does something calmer: it gives different kinds of mental load different places.
+                Work, appointments, family and just keeping life ticking over have already used up part of today&apos;s battery. That is why an easy-sounding task can still feel completely out of reach, and that is not because you have got your priorities wrong.
               </p>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.8, color: '#4A4E47', margin: 0 }}>
-                Everything in your head deserves a home. Not everything deserves your attention today.
+                Steady starts there. It counts what already has to happen, so you can see what is realistic to add, and it never asks you to explain the resistance before it helps you find a way in.
               </p>
             </div>
           </div>
@@ -256,10 +256,10 @@ export default function LandingPage() {
               How the Today screen works
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
-              Steady gives each kind of mental load a proper place.
+              Steady counts what is already spoken for, then helps you start what is left.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6A6F68', margin: 0 }}>
-              The Today screen is not one long list. It separates what is already happening, what keeps life ticking over, what is in focus, and what can wait.
+              The Today screen is not one long list. It separates what already has a claim on your battery from what you are choosing to take on, so starting does not mean confronting everything at once.
             </p>
           </div>
 
@@ -288,6 +288,33 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── Make smaller ─────────────────────────────────────────────────── */}
+      <section style={{ padding: '0 20px 72px' }}>
+        <div className="ls">
+          <div style={{ maxWidth: '54rem', margin: '0 auto', borderRadius: '24px', padding: '28px', background: 'rgba(243,240,244,0.6)', border: '1px solid rgba(92,74,94,0.12)' }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#8A8F86', marginBottom: '14px' }}>
+              Make smaller
+            </div>
+            <h3 className="font-display" style={{ fontSize: 'clamp(1.55rem, 3vw, 2rem)', lineHeight: 1.15, color: '#2B2F2A', marginBottom: '14px' }}>
+              You don&apos;t have to know why it feels hard.
+            </h3>
+            <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: '0 0 20px', maxWidth: '38rem' }}>
+              Some jobs are small and still feel impossible to begin. Steady does not ask you to explain the resistance first. It just helps you find a first step small enough to actually do.
+            </p>
+            <div style={{ borderRadius: '14px', padding: '16px 18px', background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(229,224,232,0.9)', maxWidth: '22rem' }}>
+              <div style={{ fontSize: '0.8125rem', color: '#9A9E96', marginBottom: '4px' }}>Feels heavy</div>
+              <p className="font-display" style={{ fontSize: '1.0625rem', color: '#6A6F68', margin: '0 0 12px', textDecoration: 'line-through', textDecorationColor: 'rgba(106,111,104,0.4)' }}>
+                Send the clothes order back
+              </p>
+              <div style={{ fontSize: '0.8125rem', color: '#9A9E96', marginBottom: '4px' }}>Steady suggests</div>
+              <p className="font-display" style={{ fontSize: '1.0625rem', color: '#5C4A5E', margin: 0 }}>
+                Find the returns label
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── How a day works (interactive walkthrough) ────────────────────── */}
       <HowSteadyWorks />
 
@@ -299,10 +326,10 @@ export default function LandingPage() {
               What you learn over time
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
-              Ordinary days, added over time, start to tell a story.
+              Come back and Steady starts showing what tends to be happening when starting feels harder.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4A4E47', margin: 0 }}>
-              One day tells you very little. Patterns help you understand how mornings compare with evenings, what affects energy and focus, what helps you recover, and how your capacity changes over time.
+              One day tells you very little. Patterns does not diagnose why. It gives you evidence from your own days, showing how mornings compare with evenings, how your battery tends to change through the day, and what seems to help you recover.
             </p>
           </div>
 
@@ -439,10 +466,10 @@ export default function LandingPage() {
               Who Steady is for
             </div>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '12px' }}>
-              Built for busy women whose capacity does not stay consistent.
+              Built for the days your battery has already been spent.
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#6A6F68', margin: 0 }}>
-              You do not need a diagnosis or a particular life stage for Steady to make sense. It is for women who need the plan to fit the day they actually have.
+              You do not need a diagnosis or a particular life stage for Steady to make sense. It is for women who need the plan, and the first step, to fit the day they actually have.
             </p>
           </div>
 
@@ -470,7 +497,7 @@ export default function LandingPage() {
             </h3>
             <div className="help-grid">
               {[
-                ['Not a productivity app', 'Steady is not about endless output. It helps you make today\'s plan fit today\'s reality.'],
+                ['Not a productivity app', 'Steady is not about endless output. It helps you make today\'s plan, and the next step, fit today\'s reality.'],
                 ['Not a habit tracker', 'There are no streaks. Missing a day doesn\'t create a debt. Your Daily Basics reset fresh each morning.'],
                 ['Not medical advice', 'Steady is a planning and reflection tool. It helps you notice patterns. It doesn\'t diagnose, treat or replace conversations with your GP, psychiatrist or specialist.'],
               ].map(([title, body]) => (
@@ -489,10 +516,10 @@ export default function LandingPage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', textAlign: 'center' }}>
           <div style={{ borderRadius: '28px', padding: '40px 28px', background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(229,224,232,0.9)', boxShadow: '0 10px 32px rgba(92,74,94,0.08)' }}>
             <h2 className="font-display" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.08, color: '#2B2F2A', marginBottom: '14px' }}>
-              You don&apos;t have to sort everything out today.
+              You don&apos;t have to sort everything out today.<br />Start with one thing that feels hard to begin.
             </h2>
             <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: '#4A4E47', margin: '0 auto 24px', maxWidth: '38rem' }}>
-              Just start with today. The first 100 users get free access in exchange for honest feedback.
+              Free for the first 100 users in exchange for honest feedback.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
               <TrackedAppLink
