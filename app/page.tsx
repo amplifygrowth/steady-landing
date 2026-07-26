@@ -93,14 +93,14 @@ export default function WebsitePage() {
       <section className="ws-shell" style={{ padding: '0 0 64px' }} aria-label="Also from Capable Mind">
         <p style={{ margin: '0 0 14px', color: '#8B838E', fontSize: '.74rem', fontWeight: 750, letterSpacing: '.1em', textTransform: 'uppercase' }}>Also from Capable Mind</p>
         <a href="https://loop-by-capablemind.netlify.app" target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '22px 24px', border: '1px solid var(--line)', borderRadius: 21, textDecoration: 'none', color: 'inherit', background: 'rgba(255,255,255,.7)' }}>
-          <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true" style={{ flex: 'none' }}>
-            <rect width="40" height="40" rx="11" fill="#6c5b8f" />
-            <path d="M12.2 12.2 A11 11 0 1 1 12.2 27.8" fill="none" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" />
-            <path d="M16 14 L10.5 19.5 L16 25" fill="none" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+          <svg width="44" height="44" viewBox="0 0 512 512" aria-hidden="true" style={{ flex: 'none' }}>
+            <rect width="512" height="512" rx="140" fill="#6c5b8f" />
+            <path d="M181 181 A106 106 0 1 1 181 331" fill="none" stroke="#fff" strokeWidth="30" strokeLinecap="round" />
+            <path d="M135 196 L135 272 L211 272" fill="none" stroke="#fff" strokeWidth="30" strokeLinecap="round" strokeLinejoin="round" transform="rotate(18 165.5 241.5)" />
           </svg>
           <span style={{ flex: 1, minWidth: 0 }}>
             <strong style={{ display: 'block', fontFamily: 'var(--font-fraunces)', fontSize: '1.35rem', fontWeight: 400 }}>Loop</strong>
-            <small style={{ display: 'block', color: '#6B636F', fontSize: '.92rem', marginTop: 3 }}>Keep track of everything you are waiting for.</small>
+            <small style={{ display: 'block', color: '#6B636F', fontSize: '.92rem', marginTop: 3 }}>Keep on top of everything that’s easy to forget.</small>
           </span>
           <span aria-hidden="true" style={{ color: 'var(--plum)', fontSize: '1.3rem' }}>&rarr;</span>
         </a>
