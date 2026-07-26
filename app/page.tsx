@@ -90,7 +90,7 @@ export default function WebsitePage() {
       </div></section>
 
       <section className="ws-shell ws-final"><h2>Make today more realistic. Let ordinary days teach you something useful.</h2><p>Steady helps you decide what fits now and understand what tends to help over time.</p><TrackedAppLink href={APP_URL} event="landing_start_signup_clicked" location="website_final" page="home" style={{}}><span className="ws-primary">Try Steady free</span></TrackedAppLink></section>
-      <footer className="ws-footer"><div className="ws-shell">Steady is a Capable Mind product.</div></footer>
+      <footer className="ws-footer"><div className="ws-shell">Steady is a Capable Mind product. <a href="https://loop-by-capablemind.netlify.app" style={{ color: 'var(--plum)', fontWeight: 650, textDecoration: 'none' }}>Also try Loop &rarr;</a></div></footer>
     </main>
   )
 }
