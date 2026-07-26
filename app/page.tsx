@@ -90,7 +90,23 @@ export default function WebsitePage() {
       </div></section>
 
       <section className="ws-shell ws-final"><h2>Make today more realistic. Let ordinary days teach you something useful.</h2><p>Steady helps you decide what fits now and understand what tends to help over time.</p><TrackedAppLink href={APP_URL} event="landing_start_signup_clicked" location="website_final" page="home" style={{}}><span className="ws-primary">Try Steady free</span></TrackedAppLink></section>
-      <footer className="ws-footer"><div className="ws-shell">Steady is a Capable Mind product. <a href="https://loop-by-capablemind.netlify.app" style={{ color: 'var(--plum)', fontWeight: 650, textDecoration: 'none' }}>Also try Loop &rarr;</a></div></footer>
+      <section className="ws-shell" style={{ padding: '0 0 64px' }} aria-label="Also from Capable Mind">
+        <p style={{ margin: '0 0 14px', color: '#8B838E', fontSize: '.74rem', fontWeight: 750, letterSpacing: '.1em', textTransform: 'uppercase' }}>Also from Capable Mind</p>
+        <a href="https://loop-by-capablemind.netlify.app" target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '22px 24px', border: '1px solid var(--line)', borderRadius: 21, textDecoration: 'none', color: 'inherit', background: 'rgba(255,255,255,.7)' }}>
+          <svg width="44" height="44" viewBox="0 0 40 40" aria-hidden="true" style={{ flex: 'none' }}>
+            <rect width="40" height="40" rx="11" fill="#6c5b8f" />
+            <path d="M12.2 12.2 A11 11 0 1 1 12.2 27.8" fill="none" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" />
+            <path d="M16 14 L10.5 19.5 L16 25" fill="none" stroke="#fff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span style={{ flex: 1, minWidth: 0 }}>
+            <strong style={{ display: 'block', fontFamily: 'var(--font-fraunces)', fontSize: '1.35rem', fontWeight: 400 }}>Loop</strong>
+            <small style={{ display: 'block', color: '#6B636F', fontSize: '.92rem', marginTop: 3 }}>Keep track of everything you are waiting for.</small>
+          </span>
+          <span aria-hidden="true" style={{ color: 'var(--plum)', fontSize: '1.3rem' }}>&rarr;</span>
+        </a>
+      </section>
+
+      <footer className="ws-footer"><div className="ws-shell">Steady is a Capable Mind product.</div></footer>
     </main>
   )
 }
