@@ -92,7 +92,7 @@ export default function WebsitePage() {
       <section className="ws-shell ws-final"><h2>Make today more realistic. Let ordinary days teach you something useful.</h2><p>Steady helps you decide what fits now and understand what tends to help over time.</p><TrackedAppLink href={APP_URL} event="landing_start_signup_clicked" location="website_final" page="home" style={{}}><span className="ws-primary">Try Steady free</span></TrackedAppLink></section>
       <section className="ws-shell" style={{ padding: '0 0 64px' }} aria-label="Also from Capable Mind">
         <p style={{ margin: '0 0 14px', color: '#8B838E', fontSize: '.74rem', fontWeight: 750, letterSpacing: '.1em', textTransform: 'uppercase' }}>Also from Capable Mind</p>
-        <a href="https://loop-by-capablemind.netlify.app" target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '22px 24px', border: '1px solid var(--line)', borderRadius: 21, textDecoration: 'none', color: 'inherit', background: 'rgba(255,255,255,.7)' }}>
+        <a href="https://loop.capablemind.app" target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '22px 24px', border: '1px solid var(--line)', borderRadius: 21, textDecoration: 'none', color: 'inherit', background: 'rgba(255,255,255,.7)' }}>
           <svg width="44" height="44" viewBox="0 0 512 512" aria-hidden="true" style={{ flex: 'none' }}>
             <rect width="512" height="512" rx="140" fill="#6c5b8f" />
             <path d="M181 181 A106 106 0 1 1 181 331" fill="none" stroke="#fff" strokeWidth="30" strokeLinecap="round" />
